@@ -5,5 +5,4 @@ module com.robomaze {
 
     exports com.robomaze;
     opens com.robomaze to javafx.fxml;
-    exports com.robomaze;
 }
