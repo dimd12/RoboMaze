@@ -3,6 +3,7 @@ module com.robomaze {
     requires javafx.fxml;
     requires java.desktop;
 
+    exports com.robomaze;
     opens com.robomaze to javafx.fxml;
     exports com.robomaze;
 }
