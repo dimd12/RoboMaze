@@ -12,8 +12,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.release>21</maven.compiler.release>
     </properties>
 
     <dependencies>
@@ -22,13 +21,13 @@
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
-            <version>13</version>
+            <version>21</version>
         </dependency>
 
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
-            <version>13</version>
+            <version>21</version>
         </dependency>
 
     </dependencies>
@@ -42,7 +41,7 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.0</version>
                 <configuration>
-                    <release>11</release>
+                    <release>21</release>
                 </configuration>
             </plugin>
 
@@ -59,13 +58,11 @@
                 <executions>
 
                     <!-- Default configuration for running -->
-                    <!-- Usage: mvn clean javafx:run -->
                     <execution>
                         <id>default-cli</id>
                     </execution>
 
                     <!-- Configuration for manual attach debugging -->
-                    <!-- Usage: mvn clean javafx:run@debug -->
                     <execution>
                         <id>debug</id>
                         <configuration>
@@ -106,26 +103,21 @@
                 </executions>
             </plugin>
 
-            <!-- Checkstyle -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <version>3.6.0</version>
 
                 <configuration>
-
-                    <!--
-                        The Checkstyle configuration file (2IP90_checks.xml)
-                        must be located in the root directory of your Maven project,
-                        in the same directory as pom.xml.
-                    -->
+                    <!-- The Checkstyle configuration file (2IP90_checks.xml)
+                    must be located in the root directory of your Maven project
+                    (the same directory as pom.xml). -->
                     <configLocation>2IP90_checks.xml</configLocation>
-
                     <failOnViolation>false</failOnViolation>
                     <failsOnError>true</failsOnError>
                     <includeTestSourceDirectory>true</includeTestSourceDirectory>
                     <violationSeverity>warning</violationSeverity>
-
+                    <excludes>**/module-info.java</excludes>                    
                 </configuration>
 
                 <dependencies>
