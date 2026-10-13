@@ -4,5 +4,5 @@ module com.robomaze {
     requires java.desktop;
 
     exports com.robomaze;
-    opens com.robomaze.gui to javafx.fxml;
+    opens com.robomaze.controllers to javafx.fxml;
 }

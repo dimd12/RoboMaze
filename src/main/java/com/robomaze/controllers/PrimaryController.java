@@ -1,4 +1,4 @@
-package com.robomaze.gui;
+package com.robomaze.controllers;
 
 import com.robomaze.App;
 import java.io.IOException;
