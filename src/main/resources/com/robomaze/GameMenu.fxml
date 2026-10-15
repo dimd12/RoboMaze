@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" style="-fx-background-color: black; -fx-padding: 10;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.robomaze.controllers.SecondaryController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" style="-fx-background-color: black; -fx-padding: 10;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.robomaze.controllers.GameController">
 
     <top>
         <HBox alignment="CENTER" prefHeight="64.0" prefWidth="900.0" spacing="625.0" style="-fx-background-color: #151515; -fx-background-radius: 15; -fx-border-color: #383838; -fx-border-radius: 15; -fx-border-width: 1; -fx-padding: 10;" BorderPane.alignment="CENTER">

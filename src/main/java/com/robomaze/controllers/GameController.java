@@ -4,10 +4,10 @@ import com.robomaze.App;
 import java.io.IOException;
 import javafx.fxml.FXML;
 
-public class SecondaryController {
+public class GameController {
 
     @FXML
-    private void switchToPrimary() throws IOException {
-        App.setRoot("primary");
+    private void switchToMenu() throws IOException {
+        App.setRoot("MainMenu");
     }
 }
