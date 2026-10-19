@@ -27,11 +27,11 @@ public class MenuController {
     }
 
     @FXML
-    private void initialize () {
+    private void initialize() {
         setActions();
     }
 
-    private void setActions () {
+    private void setActions() {
         btnPlay.setOnAction(e -> {
             try {
                 switchToGame();
