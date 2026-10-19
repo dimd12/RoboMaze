@@ -1,16 +1,19 @@
 package com.robomaze.controllers;
 
 import com.robomaze.App;
+import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-
-import java.io.IOException;
 
 public class HowToPlayController {
 
     @FXML
     Button btnQuit;
+
+    @FXML
     Button btnHTP;
+
+    @FXML
     Button btnPlay;
 
     @FXML

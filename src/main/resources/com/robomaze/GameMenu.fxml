@@ -44,7 +44,7 @@
                 <VBox alignment="CENTER_LEFT" prefHeight="93.0" prefWidth="212.0" spacing="6.5">
                     <children>
                         <Label style="-fx-text-fill: white;" text="Level: 1" />
-                        <Label style="-fx-text-fill: white;" text="Moves: 0" />
+                        <Label fx:id="labelMoves" style="-fx-text-fill: white;" text="Moves: 0" />
                         <Label style="-fx-text-fill: white;" text="Shortest: -" />
                     </children>
                     <VBox.margin>
@@ -85,7 +85,7 @@
                                 <Font name="System Bold" size="18.0" />
                             </font>
                         </Label>
-                        <ListView prefHeight="210.0" prefWidth="207.0" style="-fx-background-radius: 10; -fx-border-radius: 10;" />
+                        <ListView fx:id="listMoves" prefHeight="210.0" prefWidth="207.0" style="-fx-background-radius: 10; -fx-border-radius: 10;" />
                     </children>
                     <VBox.margin>
                         <Insets right="10.0" />
@@ -94,9 +94,9 @@
                 <Line endX="111.29289245605469" startX="-100.0" startY="-0.6248805522918701" stroke="#797979" />
                 <VBox prefHeight="139.0" prefWidth="207.0" spacing="10.0">
                     <children>
-                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="108.0" text="FORWARD" />
-                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="109.0" text="TURN LEFT" />
-                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="109.0" text="TURN RIGHT" />
+                        <Button fx:id="btnForward" mnemonicParsing="false" prefHeight="26.0" prefWidth="108.0" text="FORWARD" />
+                        <Button fx:id="btnTurnLeft" mnemonicParsing="false" prefHeight="26.0" prefWidth="109.0" text="TURN LEFT" />
+                        <Button fx:id="btnTurnRight" mnemonicParsing="false" prefHeight="26.0" prefWidth="109.0" text="TURN RIGHT" />
                     </children>
                     <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
@@ -128,17 +128,17 @@
                 </HBox>
                 <HBox alignment="CENTER" prefHeight="60.0" prefWidth="900.0" spacing="50.0">
                     <children>
-                        <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="▶ RUN">
+                        <Button fx:id="btnRun" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="▶ RUN">
                             <font>
                                 <Font name="System Bold" size="18.0" />
                             </font>
                         </Button>
-                        <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="Reset">
+                        <Button fx:id="btnReset" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="Reset">
                             <font>
                                 <Font name="System Bold" size="18.0" />
                             </font>
                         </Button>
-                        <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="New Maze">
+                        <Button fx:id="btnNewMaze" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="New Maze">
                             <font>
                                 <Font name="System Bold" size="18.0" />
                             </font>
