@@ -5,8 +5,11 @@ import static com.robomaze.models.TileType.ROBOT;
 import static com.robomaze.models.TileType.TARGET;
 import static com.robomaze.models.TileType.WALL;
 
+import com.robomaze.algorithms.FastestPathAlg;
 import com.robomaze.models.Robot;
 import com.robomaze.models.TileType;
+
+import java.awt.*;
 import java.util.List;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -34,27 +37,24 @@ public class GameController {
 
     @FXML
     Button btnForward;
-
     @FXML
     Button btnTurnLeft;
-
     @FXML
     Button btnTurnRight;
-
     @FXML
     Label labelMoves;
-
+    @FXML
+    Label labelShortest;
     @FXML
     ListView<String> listMoves;
-
     @FXML
     Button btnRun;
-
     @FXML
     Button btnReset;
-
     @FXML
     Button btnNewMaze;
+    @FXML
+    Button btnViewPath;
 
     Timeline timeline;
 
@@ -120,6 +120,15 @@ public class GameController {
         for (int i = 0; i < tiles.length; i++) {
             originalTiles[i] = tiles[i].clone();
         }
+
+        btnRun.setDisable(false);
+        btnReset.setDisable(false);
+        btnNewMaze.setDisable(false);
+        btnForward.setDisable(false);
+        btnTurnLeft.setDisable(false);
+        btnTurnRight.setDisable(false);
+        btnViewPath.setDisable(false);
+
     }
 
     @FXML
@@ -152,20 +161,28 @@ public class GameController {
 
     @FXML
     private void initializeRobot() {
-        int r = 0;
-        int c = 0;
+        int r = -1;
+        int c = -1;
 
         for (int i = 0; i < tiles.length; i++) {
             for (int j = 0; j < tiles[i].length; j++) {
                 if (tiles[i][j] == ROBOT) {
                     r = i;
                     c = j;
+                    break;
                 }
+            }
+            if (r != -1) {
+                break;
             }
         }
 
+        if (r == -1 || c == -1) {
+            throw new IllegalStateException("Robot not found");
+        }
+
         robot = new Robot(r, c);
-        robot.setDirection("UP");
+        robot.setDirection("RIGHT");
     }
 
     @FXML
@@ -175,6 +192,7 @@ public class GameController {
         btnTurnRight.setOnAction(e -> moves("TURN_RIGHT"));
         btnRun.setOnAction(e -> runMoves(listMoves.getItems()));
         btnReset.setOnAction(e -> reset());
+        btnViewPath.setOnAction(e -> viewFastestPath());
     }
 
     private void reset() {
@@ -192,6 +210,14 @@ public class GameController {
         listMoves.getItems().clear();
         labelMoves.setText("Moves: 0");
 
+        btnRun.setDisable(false);
+        btnReset.setDisable(false);
+        btnNewMaze.setDisable(false);
+        btnForward.setDisable(false);
+        btnTurnLeft.setDisable(false);
+        btnTurnRight.setDisable(false);
+        btnViewPath.setDisable(false);
+
         setGridColors();
     }
 
@@ -201,22 +227,24 @@ public class GameController {
         }
 
         List<String> commands = List.copyOf(moves);
+        if (commands.isEmpty()) {
+            return;
+        }
+
         final int[] index = {0};
 
         timeline = new Timeline(
                 new KeyFrame(Duration.millis(250), event -> {
-                    if (index[0] < commands.size()) {
-                        String move = commands.get(index[0]++);
+                    String move = commands.get(index[0]++);
 
-                        switch (move) {
-                            case "FORWARD" ->
-                                forward();
-                            case "TURN_LEFT" ->
-                                turnLeft();
-                            case "TURN_RIGHT" ->
-                                turnRight();
-                            default -> {
-                            }
+                    switch (move) {
+                        case "FORWARD" ->
+                            forward();
+                        case "TURN_LEFT" ->
+                            turnLeft();
+                        case "TURN_RIGHT" ->
+                            turnRight();
+                        default -> {
                         }
                     }
                 })
@@ -239,6 +267,8 @@ public class GameController {
     }
 
     private void forward() {
+        int oldRow = robot.getRow();
+        int oldCol = robot.getCol();
         robot.move();
 
         switch (robot.getDirection()) {
@@ -252,6 +282,10 @@ public class GameController {
                 moveRight();
             default -> {
             }
+        }
+
+        if (tiles[oldRow][oldCol] == ROBOT) {
+            tiles[oldRow][oldCol] = originalTiles[oldRow][oldCol] == TARGET ? TARGET : EMPTY;
         }
 
         tiles[robot.getRow()][robot.getCol()] = ROBOT;
@@ -330,5 +364,83 @@ public class GameController {
             default -> {
             }
         }
+    }
+
+    private void calculateFastestPath() {
+        Point start = getRobot(originalTiles);
+        Point target = getTarget(originalTiles);
+
+        List<Point> path = FastestPathAlg.shortestPath(originalTiles, start, target);
+        int moves = FastestPathAlg.calculateMoves(path);
+
+        if (path.isEmpty()) {
+            labelShortest.setText("Shortest: No path found");
+        } else {
+            labelShortest.setText("Shortest: " + moves);
+        }
+    }
+
+    private void viewFastestPath() {
+        Point start = getRobot(originalTiles);
+        Point target = getTarget(originalTiles);
+
+        List<Point> path = FastestPathAlg.shortestPath(originalTiles, start, target);
+
+        setGridColors();
+
+        if (path.isEmpty()) {
+            labelShortest.setText("Shortest: no path");
+            return;
+        }
+
+        labelShortest.setText("Shortest: "
+                + FastestPathAlg.calculateMoves(path));
+
+        for (Point point : path) {
+            if ((point.x == start.x && point.y == start.y)
+                    || (point.x == target.x && point.y == target.y)) {
+                continue;
+            }
+
+            for (javafx.scene.Node node : grid.getChildren()) {
+                Integer row = GridPane.getRowIndex(node);
+                Integer col = GridPane.getColumnIndex(node);
+
+                if (node instanceof Rectangle cell
+                        && row != null && col != null
+                        && row == point.x && col == point.y) {
+                    cell.setFill(Color.RED);
+                    break;
+                }
+            }
+        }
+
+        btnRun.setDisable(true);
+        btnForward.setDisable(true);
+        btnTurnLeft.setDisable(true);
+        btnTurnRight.setDisable(true);
+        btnViewPath.setDisable(true);
+    }
+
+    private Point getTarget(TileType[][] maze) {
+        for (int i = 0; i < maze.length; i++) {
+            for (int j = 0; j < maze[i].length; j++) {
+                if (maze[i][j] == TARGET) {
+                    return new Point(i, j);
+                }
+            }
+        }
+        throw new IllegalStateException("Target not found");
+    }
+
+    private Point getRobot(TileType[][] maze) {
+        for (int i = 0; i < maze.length; i++) {
+            for (int j = 0; j < maze[i].length; j++) {
+                if (maze[i][j] == ROBOT) {
+                    return new Point(i, j);
+                }
+            }
+        }
+        throw new IllegalStateException("Robot not found");
     }
 }
