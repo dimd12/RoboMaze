@@ -13,19 +13,19 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" style="-fx-background-color: black; -fx-padding: 10;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.robomaze.controllers.GameController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" style="-fx-background-color: #070B12; -fx-padding: 10; -fx-font-colour: #E6EAF0; -fx-font-family: consolas;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.robomaze.controllers.GameController">
 
     <top>
-        <HBox alignment="CENTER" prefHeight="64.0" prefWidth="900.0" spacing="625.0" style="-fx-background-color: #151515; -fx-background-radius: 15; -fx-border-color: #383838; -fx-border-radius: 15; -fx-border-width: 1; -fx-padding: 10;" BorderPane.alignment="CENTER">
+        <HBox alignment="CENTER" minWidth="-Infinity" prefHeight="64.0" prefWidth="839.0" spacing="600.0" style="-fx-background-color: #111720; -fx-background-radius: 15; -fx-border-color: #343D49; -fx-border-radius: 15; -fx-border-width: 1; -fx-padding: 10;" BorderPane.alignment="CENTER">
             <children>
-                <Label style="-fx-text-fill: white;" text="Robot Maze">
+                <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="191.0" style="-fx-text-fill: white;" text="Robot Maze" textAlignment="RIGHT" wrapText="true">
                     <font>
-                        <Font name="System Bold Italic" size="30.0" />
+                        <Font name="Consolas Bold Italic" size="32.0" />
                     </font>
                 </Label>
-                <Label style="-fx-text-fill: white;" text="Level 1">
+                <Label centerShape="false" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="104.0" style="-fx-text-fill: white;" text="Level 1" wrapText="true">
                     <font>
-                        <Font size="18.0" />
+                        <Font name="Consolas Bold" size="23.0" />
                     </font>
                 </Label>
             </children>
@@ -33,35 +33,47 @@
     </top>
 
     <left>
-        <VBox alignment="TOP_CENTER" prefHeight="586.0" prefWidth="211.0" spacing="10.0" style="-fx-background-color: #151515; -fx-background-radius: 15; -fx-border-color: #383838; -fx-border-radius: 15; -fx-border-width: 1; -fx-padding: 10;" BorderPane.alignment="CENTER">
+        <VBox alignment="TOP_CENTER" prefHeight="586.0" prefWidth="211.0" spacing="10.0" style="-fx-background-color: #111720; -fx-background-radius: 15; -fx-border-color: #343D49; -fx-border-radius: 15; -fx-border-width: 1; -fx-padding: 10;" BorderPane.alignment="CENTER">
             <children>
                 <Label style="-fx-text-fill: white;" text="LEVEL INFO">
                     <font>
-                        <Font name="System Bold" size="24.0" />
+                        <Font name="Consolas Bold" size="28.0" />
                     </font>
                 </Label>
-                <Line endX="110.5" startX="-100.0" stroke="#797979" />
+                <Line endX="110.5" startX="-100.0" stroke="#343d49" />
                 <VBox alignment="CENTER_LEFT" prefHeight="93.0" prefWidth="212.0" spacing="6.5">
                     <children>
-                        <Label style="-fx-text-fill: white;" text="Level: 1" />
-                        <Label fx:id="labelMoves" style="-fx-text-fill: white;" text="Moves: 0" />
-                        <Label style="-fx-text-fill: white;" text="Shortest: -" />
+                        <Label style="-fx-text-fill: white;" text="Level: 1">
+                     <font>
+                        <Font name="Consolas" size="14.0" />
+                     </font></Label>
+                        <Label style="-fx-text-fill: white;" text="Moves: 0">
+                     <font>
+                        <Font name="Consolas" size="14.0" />
+                     </font></Label>
+                        <Label style="-fx-text-fill: white;" text="Shortest: -">
+                     <font>
+                        <Font name="Consolas" size="14.0" />
+                     </font></Label>
                     </children>
                     <VBox.margin>
                         <Insets left="10.0" />
                     </VBox.margin>
                 </VBox>
-                <Line endX="111.29289245605469" startX="-100.0" startY="-0.6248805522918701" stroke="#797979" />
+                <Line endX="111.29289245605469" startX="-100.0" startY="-0.6248805522918701" stroke="#343d49" />
                 <Label style="-fx-text-fill: white;" text="LEGEND">
                     <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font name="Consolas Bold" size="18.0" />
                     </font>
                 </Label>
-                <VBox prefHeight="200.0" prefWidth="100.0" spacing="6.5">
+                <VBox prefHeight="200.0" prefWidth="100.0" spacing="6.5" style="-fx-font-family: consolas;">
                     <children>
                         <Label style="-fx-text-fill: white;" text="⬛ Wall" />
                         <Label style="-fx-text-fill: white;" text="⬜ Floor" />
-                        <Label style="-fx-text-fill: white;" text="🤖 Robot" />
+                        <Label style="-fx-text-fill: white;" text="🤖 Robot">
+                     <font>
+                        <Font name="Consolas" size="12.0" />
+                     </font></Label>
                         <Label style="-fx-text-fill: white;" text="🟩 Target" />
                     </children>
                     <VBox.margin>
@@ -76,27 +88,27 @@
     </left>
 
     <right>
-        <VBox prefHeight="586.0" prefWidth="217.0" spacing="10.0" style="-fx-background-color: #151515; -fx-background-radius: 15; -fx-border-color: #383838; -fx-border-radius: 15; -fx-border-width: 1; -fx-padding: 10;" BorderPane.alignment="CENTER">
+        <VBox prefHeight="586.0" prefWidth="217.0" spacing="10.0" style="-fx-background-color: #111720; -fx-background-radius: 15; -fx-border-color: #343D49; -fx-border-radius: 15; -fx-border-width: 1; -fx-padding: 10;" BorderPane.alignment="CENTER">
             <children>
                 <VBox alignment="TOP_CENTER" prefHeight="258.0" prefWidth="207.0" spacing="10.0">
                     <children>
                         <Label style="-fx-text-fill: white;" text="Program">
                             <font>
-                                <Font name="System Bold" size="18.0" />
+                                <Font name="Consolas Bold" size="22.0" />
                             </font>
                         </Label>
-                        <ListView fx:id="listMoves" prefHeight="210.0" prefWidth="207.0" style="-fx-background-radius: 10; -fx-border-radius: 10;" />
+                        <ListView prefHeight="210.0" prefWidth="207.0" style="-fx-background-radius: 10; -fx-border-radius: 10;" />
                     </children>
                     <VBox.margin>
                         <Insets right="10.0" />
                     </VBox.margin>
                 </VBox>
-                <Line endX="111.29289245605469" startX="-100.0" startY="-0.6248805522918701" stroke="#797979" />
-                <VBox prefHeight="139.0" prefWidth="207.0" spacing="10.0">
+                <Line endX="111.29289245605469" startX="-100.0" startY="-0.6248805522918701" stroke="#343d49" />
+                <VBox prefHeight="139.0" prefWidth="207.0" spacing="10.0" style="-fx-font-family: consolas; -fx-font-weight: 700;">
                     <children>
-                        <Button fx:id="btnForward" mnemonicParsing="false" prefHeight="26.0" prefWidth="108.0" text="FORWARD" />
-                        <Button fx:id="btnTurnLeft" mnemonicParsing="false" prefHeight="26.0" prefWidth="109.0" text="TURN LEFT" />
-                        <Button fx:id="btnTurnRight" mnemonicParsing="false" prefHeight="26.0" prefWidth="109.0" text="TURN RIGHT" />
+                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="109.0" text="TURN LEFT" />
+                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="109.0" text="TURN RIGHT" />
+                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="108.0" text="FORWARD" />
                     </children>
                     <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
@@ -110,13 +122,13 @@
     </right>
 
     <bottom>
-        <VBox prefHeight="155.0" prefWidth="900.0" spacing="5.0" style="-fx-background-color: #151515; -fx-background-radius: 15; -fx-border-color: #383838; -fx-border-radius: 15; -fx-border-width: 1; -fx-padding: 10;" BorderPane.alignment="CENTER">
+        <VBox prefHeight="155.0" prefWidth="900.0" spacing="5.0" style="-fx-background-color: #111720; -fx-background-radius: 15; -fx-border-color: #343D49; -fx-border-radius: 15; -fx-border-width: 1; -fx-padding: 10; -fx-font-family: consolas;" BorderPane.alignment="CENTER">
             <children>
-                <HBox alignment="CENTER" prefHeight="42.0" prefWidth="900.0" spacing="500.0">
+                <HBox alignment="CENTER" prefHeight="42.0" prefWidth="900.0" spacing="500.0" style="-fx-background-color: #111720;">
                     <children>
-                        <Label style="-fx-text-fill: white;" text="PROGRAM CONTROLS">
+                        <Label prefHeight="40.0" prefWidth="188.0" style="-fx-text-fill: white;" text="PROGRAM CONTROLS" wrapText="true">
                             <font>
-                                <Font name="System Bold" size="18.0" />
+                                <Font name="Consolas Bold" size="34.0" />
                             </font>
                         </Label>
                         <Button mnemonicParsing="false" text="Clear Commands">
@@ -128,17 +140,17 @@
                 </HBox>
                 <HBox alignment="CENTER" prefHeight="60.0" prefWidth="900.0" spacing="50.0">
                     <children>
-                        <Button fx:id="btnRun" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="▶ RUN">
+                        <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="▶ RUN">
                             <font>
                                 <Font name="System Bold" size="18.0" />
                             </font>
                         </Button>
-                        <Button fx:id="btnReset" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="Reset">
+                        <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="Reset">
                             <font>
                                 <Font name="System Bold" size="18.0" />
                             </font>
                         </Button>
-                        <Button fx:id="btnNewMaze" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="New Maze">
+                        <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="New Maze">
                             <font>
                                 <Font name="System Bold" size="18.0" />
                             </font>
@@ -155,7 +167,7 @@
     </bottom>
 
     <center>
-        <GridPane gridLinesVisible="true" style="-fx-background-color: #151515; -fx-background-radius: 15; -fx-border-color: #383838; -fx-border-radius: 15; -fx-border-width: 1; -fx-padding: 5;" BorderPane.alignment="CENTER" fx:id="grid">
+        <GridPane fx:id="grid" gridLinesVisible="true" style="-fx-background-color: #111720; -fx-background-radius: 15; -fx-border-color: #343d49; -fx-border-radius: 15; -fx-border-width: 1; -fx-padding: 5;" BorderPane.alignment="CENTER">
             <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

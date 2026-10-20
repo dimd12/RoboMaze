@@ -10,86 +10,43 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="650.0"
-            prefWidth="900.0"
-            style="-fx-background-color: #000000;"
-            xmlns="http://javafx.com/javafx/26"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.robomaze.controllers.HowToPlayController">
+<BorderPane prefHeight="650.0" prefWidth="900.0" style="-fx-background-color: #070B12;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.robomaze.controllers.HowToPlayController">
 
     <left>
-        <VBox alignment="CENTER"
-              prefHeight="650.0"
-              prefWidth="303.0"
-              spacing="20.0"
-              style="-fx-background-color: #151515;
-                     -fx-background-radius: 18;
-                     -fx-border-color: #777777;
-                     -fx-border-width: 2;
-                     -fx-border-radius: 18;
-                     -fx-padding: 20;"
-              BorderPane.alignment="CENTER">
+        <VBox alignment="CENTER" prefHeight="650.0" prefWidth="303.0" spacing="20.0" style="-fx-background-color: #111720; -fx-background-radius: 18; -fx-border-color: 00000; -fx-border-width: 2; -fx-border-radius: 18; -fx-padding: 20;" BorderPane.alignment="CENTER">
             <children>
                 <VBox alignment="CENTER" prefHeight="108.0" prefWidth="303.0">
                     <children>
-                        <Label prefHeight="57.0" prefWidth="133.0"
-                               style="-fx-text-fill: white;"
-                               text="ROBOT">
+                        <Label prefHeight="58.0" prefWidth="139.0" style="-fx-text-fill: #E6EAF0;" text="ROBOT" textFill="#e6eaf0" wrapText="true">
                             <font>
-                                <Font name="System Bold Italic" size="40.0"/>
+                                <Font name="Consolas Bold Italic" size="50.0" />
                             </font>
                         </Label>
-                        <Label prefHeight="52.0" prefWidth="102.0"
-                               style="-fx-text-fill: white;"
-                               text="MAZE">
+                        <Label prefHeight="58.0" prefWidth="110.0" style="-fx-text-fill: #E6EAF0;" text="MAZE">
                             <font>
-                                <Font name="System Bold Italic" size="36.0"/>
+                                <Font name="Consolas Bold Italic" size="50.0" />
                             </font>
                         </Label>
                     </children>
                 </VBox>
 
-                <Button fx:id="btnPlay"
-                        mnemonicParsing="false"
-                        prefHeight="42.0"
-                        prefWidth="194.0"
-                        style="-fx-background-color: #292929;
-                               -fx-text-fill: white;
-                               -fx-background-radius: 12;
-                               -fx-border-color: #888888;
-                               -fx-border-width: 1.5;
-                               -fx-border-radius: 12;
-                               -fx-cursor: hand;"
-                        text="Play"/>
+                <Button fx:id="btnPlay" mnemonicParsing="false" prefHeight="42.0" prefWidth="194.0" style="-fx-background-color: #1B222D; -fx-text-fill: #E6EAF0; -fx-background-radius: 12; -fx-border-color: #343D49; -fx-border-width: 1.5; -fx-border-radius: 12; -fx-cursor: hand;" text="PLAY" wrapText="true">
+               <font>
+                  <Font name="Consolas Bold" size="20.0" />
+               </font></Button>
 
-                <Button fx:id="btnHTP"
-                        mnemonicParsing="false"
-                        prefHeight="42.0"
-                        prefWidth="194.0"
-                        style="-fx-background-color: #292929;
-                               -fx-text-fill: white;
-                               -fx-background-radius: 12;
-                               -fx-border-color: #888888;
-                               -fx-border-width: 1.5;
-                               -fx-border-radius: 12;
-                               -fx-cursor: hand;"
-               text="How to Play"/>
+                <Button fx:id="btnHTP" mnemonicParsing="false" prefHeight="42.0" prefWidth="194.0" style="-fx-background-color: #E6EAF0; -fx-text-fill: #1B222D; -fx-background-radius: 12; -fx-border-color: #343D49; -fx-border-width: 1.5; -fx-border-radius: 12; -fx-cursor: hand;" text="How to Play" textFill="#282828">
+               <font>
+                  <Font name="Consolas Bold" size="20.0" />
+               </font></Button>
 
-                <Button fx:id="btnQuit"
-                        mnemonicParsing="false"
-                        prefHeight="42.0"
-                        prefWidth="194.0"
-                        style="-fx-background-color: #292929;
-                               -fx-text-fill: white;
-                               -fx-background-radius: 12;
-                               -fx-border-color: #888888;
-                               -fx-border-width: 1.5;
-                               -fx-border-radius: 12;
-                               -fx-cursor: hand;"
-                        text="Quit"/>
+                <Button fx:id="btnQuit" mnemonicParsing="false" prefHeight="42.0" prefWidth="194.0" style="-fx-background-color: #1B222D; -fx-text-fill: #E6EAF0; -fx-background-radius: 12; -fx-border-color: #343D49; -fx-border-width: 1.5; -fx-border-radius: 12; -fx-cursor: hand;" text="Quit">
+               <font>
+                  <Font name="Consolas Bold" size="20.0" />
+               </font></Button>
             </children>
             <BorderPane.margin>
-                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
             </BorderPane.margin>
         </VBox>
     </left>
@@ -99,47 +56,39 @@
             <children>
                 <VBox alignment="CENTER" spacing="4.0">
                     <children>
-                        <Label style="-fx-text-fill: white;" text="HOW TO PLAY">
+                        <Label style="-fx-text-fill: #E6EAF0;" text="HOW TO PLAY">
                             <font>
-                                <Font name="System Bold Italic" size="32.0"/>
+                                <Font name="Consolas Bold Italic" size="42.0" />
                             </font>
                         </Label>
-                        <Label style="-fx-text-fill: #999999;"
-                               text="Program the robot. Find the route. Reach the goal."/>
+                        <Label style="-fx-text-fill: #999999;" text="Program the robot. Find the route. Reach the goal.">
+                     <font>
+                        <Font name="Consolas" size="12.0" />
+                     </font></Label>
                     </children>
                 </VBox>
 
-                <ScrollPane fitToWidth="true"
-                            hbarPolicy="NEVER"
-                            style="-fx-background: transparent;
-                                   -fx-background-color: transparent;
-                                   -fx-border-color: transparent;">
+                <ScrollPane fitToWidth="true" hbarPolicy="NEVER" style="-fx-background: transparent;                                    -fx-background-color: transparent;                                    -fx-border-color: transparent;">
                     <content>
                         <VBox spacing="12.0" style="-fx-background-color: transparent;">
                             <padding>
-                                <Insets bottom="6.0" left="2.0" right="8.0" top="2.0"/>
+                                <Insets bottom="6.0" left="2.0" right="8.0" top="2.0" />
                             </padding>
                             <children>
-                                <VBox spacing="10.0"
-                                      style="-fx-background-color: #151515;
-                                             -fx-background-radius: 18;
-                                             -fx-border-color: #777777;
-                                             -fx-border-width: 1.5;
-                                             -fx-border-radius: 18;
-                                             -fx-padding: 16;">
+                                <VBox spacing="10.0" style="-fx-background-color: #111720; -fx-background-radius: 18; -fx-border-color: #343D49; -fx-border-width: 1.5; -fx-border-radius: 18; -fx-padding: 16;">
                                     <children>
                                         <HBox alignment="CENTER_LEFT" spacing="12.0">
                                             <children>
-                                                <Circle radius="20.0" fill="#434343"/>
+                                                <Circle fill="#1b222d" radius="20.0" />
                                                 <VBox spacing="4.0">
                                                     <children>
-                                                        <Label text="1. THE OBJECTIVE"
-                                                               style="-fx-text-fill: white;">
-                                                            <font><Font name="System Bold" size="17.0"/></font>
+                                                        <Label style="-fx-text-fill: white;" text="1. THE OBJECTIVE">
+                                                            <font><Font name="Consolas Bold" size="18.0" /></font>
                                                         </Label>
-                                                        <Label wrapText="true"
-                                                               text="Guide your robot through the maze and reach the green target. Walls block your path, so plan your route before running your program."
-                                                               style="-fx-text-fill: #dddddd;"/>
+                                                        <Label style="-fx-text-fill: #dddddd;" text="Guide your robot through the maze and reach the green target. Walls block your path, so plan your route before running your program." wrapText="true">
+                                             <font>
+                                                <Font name="Consolas" size="12.0" />
+                                             </font></Label>
                                                     </children>
                                                 </VBox>
                                             </children>
@@ -147,75 +96,66 @@
                                     </children>
                                 </VBox>
 
-                                <VBox spacing="10.0"
-                                      style="-fx-background-color: #151515;
-                                             -fx-background-radius: 18;
-                                             -fx-border-color: #777777;
-                                             -fx-border-width: 1.5;
-                                             -fx-border-radius: 18;
-                                             -fx-padding: 16;">
+                                <VBox spacing="10.0" style="-fx-background-color: #111720; -fx-background-radius: 18; -fx-border-color: #343D49; -fx-border-width: 1.5; -fx-border-radius: 18; -fx-padding: 16;">
                                     <children>
                                         <HBox alignment="CENTER_LEFT" spacing="12.0">
                                             <children>
-                                                <Circle radius="20.0" fill="#434343"/>
+                                                <Circle fill="#1b222d" radius="20.0" />
                                                 <VBox spacing="4.0">
                                                     <children>
-                                                        <Label text="2. BUILD YOUR PROGRAM"
-                                                               style="-fx-text-fill: white;">
-                                                            <font><Font name="System Bold" size="17.0"/></font>
+                                                        <Label style="-fx-text-fill: white;" text="2. BUILD YOUR PROGRAM">
+                                                            <font><Font name="Consolas Bold" size="18.0" /></font>
                                                         </Label>
-                                                        <Label wrapText="true"
-                                                               text="Use the command buttons to add instructions to your program. Commands run in the order you add them."
-                                                               style="-fx-text-fill: #dddddd;"/>
+                                                        <Label style="-fx-text-fill: #E6EAF0;" text="Use the command buttons to add instructions to your program. Commands run in the order you add them." wrapText="true">
+                                             <font>
+                                                <Font name="Consolas" size="12.0" />
+                                             </font></Label>
                                                     </children>
                                                 </VBox>
                                             </children>
                                         </HBox>
                                         <HBox spacing="10.0">
                                             <children>
-                                                <VBox alignment="CENTER" spacing="5.0"
-                                                      style="-fx-background-color: #222222;
-                                                             -fx-background-radius: 10;
-                                                             -fx-padding: 10;"
-                                                      HBox.hgrow="ALWAYS">
+                                                <VBox alignment="CENTER" spacing="5.0" style="-fx-background-color: #343D49; -fx-background-radius: 10; -fx-padding: 10;" HBox.hgrow="ALWAYS">
                                                     <children>
-                                                        <Label text="↑" style="-fx-text-fill: white;">
-                                                            <font><Font name="System Bold" size="22.0"/></font>
+                                                        <Label style="-fx-text-fill: white;" text="↑">
+                                                            <font><Font name="System Bold" size="22.0" /></font>
                                                         </Label>
-                                                        <Label text="FORWARD" style="-fx-text-fill: white;">
-                                                            <font><Font name="System Bold" size="11.0"/></font>
+                                                        <Label style="-fx-text-fill: white;" text="FORWARD">
+                                                            <font><Font name="Consolas Bold" size="14.0" /></font>
                                                         </Label>
-                                                        <Label text="Move one tile" style="-fx-text-fill: #aaaaaa;"/>
+                                                        <Label style="-fx-text-fill: #aaaaaa;" text="Move one tile">
+                                             <font>
+                                                <Font name="Consolas" size="12.0" />
+                                             </font></Label>
                                                     </children>
                                                 </VBox>
-                                                <VBox alignment="CENTER" spacing="5.0"
-                                                      style="-fx-background-color: #222222;
-                                                             -fx-background-radius: 10;
-                                                             -fx-padding: 10;"
-                                                      HBox.hgrow="ALWAYS">
+                                                <VBox alignment="CENTER" spacing="5.0" style="-fx-background-color: #343D49; -fx-background-radius: 10; -fx-padding: 10;" HBox.hgrow="ALWAYS">
                                                     <children>
-                                                        <Label text="↶" style="-fx-text-fill: white;">
-                                                            <font><Font name="System Bold" size="22.0"/></font>
+                                                        <Label style="-fx-text-fill: white;" text="↶">
+                                                            <font><Font name="System Bold" size="22.0" /></font>
                                                         </Label>
-                                                        <Label text="TURN LEFT" style="-fx-text-fill: white;">
-                                                            <font><Font name="System Bold" size="11.0"/></font>
+                                                        <Label style="-fx-text-fill: white;" text="TURN LEFT">
+                                                            <font><Font name="Consolas Bold" size="14.0" /></font>
                                                         </Label>
-                                                        <Label text="Rotate left" style="-fx-text-fill: #aaaaaa;"/>
+                                                        <Label style="-fx-text-fill: #aaaaaa;" text="Rotate left">
+                                             <font>
+                                                <Font name="Consolas" size="12.0" />
+                                             </font></Label>
                                                     </children>
                                                 </VBox>
-                                                <VBox alignment="CENTER" spacing="5.0"
-                                                      style="-fx-background-color: #222222;
-                                                             -fx-background-radius: 10;
-                                                             -fx-padding: 10;"
-                                                      HBox.hgrow="ALWAYS">
+                                                <VBox alignment="CENTER" spacing="5.0" style="-fx-background-color: #343D49; -fx-background-radius: 10; -fx-padding: 10;" HBox.hgrow="ALWAYS">
                                                     <children>
-                                                        <Label text="↷" style="-fx-text-fill: white;">
-                                                            <font><Font name="System Bold" size="22.0"/></font>
+                                                        <Label style="-fx-text-fill: white;" text="↷">
+                                                            <font><Font name="System Bold" size="22.0" /></font>
                                                         </Label>
-                                                        <Label text="TURN RIGHT" style="-fx-text-fill: white;">
-                                                            <font><Font name="System Bold" size="11.0"/></font>
+                                                        <Label style="-fx-text-fill: white;" text="TURN RIGHT">
+                                                            <font><Font name="Consolas Bold" size="14.0" /></font>
                                                         </Label>
-                                                        <Label text="Rotate right" style="-fx-text-fill: #aaaaaa;"/>
+                                                        <Label style="-fx-text-fill: #aaaaaa;" text="Rotate right">
+                                             <font>
+                                                <Font name="Consolas" size="12.0" />
+                                             </font></Label>
                                                     </children>
                                                 </VBox>
                                             </children>
@@ -223,26 +163,20 @@
                                     </children>
                                 </VBox>
 
-                                <VBox spacing="10.0"
-                                      style="-fx-background-color: #151515;
-                                             -fx-background-radius: 18;
-                                             -fx-border-color: #777777;
-                                             -fx-border-width: 1.5;
-                                             -fx-border-radius: 18;
-                                             -fx-padding: 16;">
+                                <VBox spacing="10.0" style="-fx-background-color: #111720; -fx-background-radius: 18; -fx-border-color: #343D49; -fx-border-width: 1.5; -fx-border-radius: 18; -fx-padding: 16;">
                                     <children>
                                         <HBox alignment="CENTER_LEFT" spacing="12.0">
                                             <children>
-                                                <Circle radius="20.0" fill="#434343"/>
+                                                <Circle fill="#1b222d" radius="20.0" />
                                                 <VBox spacing="4.0">
                                                     <children>
-                                                        <Label text="3. RUN &amp; RESET"
-                                                               style="-fx-text-fill: white;">
-                                                            <font><Font name="System Bold" size="17.0"/></font>
+                                                        <Label style="-fx-text-fill: #E6EAF0;" text="3. RUN &amp; RESET">
+                                                            <font><Font name="Consolas Bold" size="18.0" /></font>
                                                         </Label>
-                                                        <Label wrapText="true"
-                                                               text="Press RUN to execute the commands. Use Clear Commands to empty your program, or Reset to return the robot and move counter to their starting state."
-                                                               style="-fx-text-fill: #dddddd;"/>
+                                                        <Label style="-fx-text-fill: #E6EAF0;" text="Press RUN to execute the commands. Use Clear Commands to empty your program, or Reset to return the robot and move counter to their starting state." wrapText="true">
+                                             <font>
+                                                <Font name="Consolas" size="12.0" />
+                                             </font></Label>
                                                     </children>
                                                 </VBox>
                                             </children>
@@ -250,26 +184,20 @@
                                     </children>
                                 </VBox>
 
-                                <VBox spacing="10.0"
-                                      style="-fx-background-color: #151515;
-                                             -fx-background-radius: 18;
-                                             -fx-border-color: #777777;
-                                             -fx-border-width: 1.5;
-                                             -fx-border-radius: 18;
-                                             -fx-padding: 16;">
+                                <VBox spacing="10.0" style="-fx-background-color: #111720; -fx-background-radius: 18; -fx-border-color: #343D49; -fx-border-width: 1.5; -fx-border-radius: 18; -fx-padding: 16;">
                                     <children>
                                         <HBox alignment="CENTER_LEFT" spacing="12.0">
                                             <children>
-                                                <Circle radius="20.0" fill="#434343"/>
+                                                <Circle fill="#1b222d" radius="20.0" />
                                                 <VBox spacing="4.0">
                                                     <children>
-                                                        <Label text="4. WATCH YOUR MOVES"
-                                                               style="-fx-text-fill: white;">
-                                                            <font><Font name="System Bold" size="17.0"/></font>
+                                                        <Label style="-fx-text-fill: #E6EAF0;" text="4. WATCH YOUR MOVES">
+                                                            <font><Font name="Consolas Bold" size="18.0" /></font>
                                                         </Label>
-                                                        <Label wrapText="true"
-                                                               text="The robot cannot move through walls or leave the maze. Invalid moves should not count. Reach the green target to complete the level."
-                                                               style="-fx-text-fill: #dddddd;"/>
+                                                        <Label style="-fx-text-fill: #e6eaf0;" text="The robot cannot move through walls or leave the maze. Invalid moves should not count. Reach the green target to complete the level." wrapText="true">
+                                             <font>
+                                                <Font name="Consolas" size="12.0" />
+                                             </font></Label>
                                                     </children>
                                                 </VBox>
                                             </children>
@@ -277,11 +205,9 @@
                                     </children>
                                 </VBox>
 
-                                <Label text="TIP: The shortest route is not always the route your first idea takes!"
-                                       wrapText="true"
-                                       style="-fx-text-fill: #8f8f8f; -fx-font-style: italic;">
+                                <Label style="-fx-text-fill: #8f8f8f; -fx-font-style: italic;" text="TIP: The shortest route is not always the route your first idea takes!" wrapText="true">
                                     <VBox.margin>
-                                        <Insets bottom="4.0" left="8.0" right="8.0" top="2.0"/>
+                                        <Insets bottom="4.0" left="8.0" right="8.0" top="2.0" />
                                     </VBox.margin>
                                 </Label>
                             </children>
