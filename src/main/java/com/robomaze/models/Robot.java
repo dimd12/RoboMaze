@@ -13,7 +13,7 @@ public class Robot {
         this.row = row;
         this.col = col;
         this.moves = 0;
-        this.direction = "LEFT";
+        this.direction = "RIGHT";
     }
 
     public int getRow() {
