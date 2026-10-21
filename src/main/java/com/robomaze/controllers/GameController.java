@@ -6,20 +6,23 @@ import static com.robomaze.models.TileType.TARGET;
 import static com.robomaze.models.TileType.WALL;
 
 import com.robomaze.algorithms.FastestPathAlg;
+import com.robomaze.algorithms.MazeGeneration;
 import com.robomaze.models.Robot;
 import com.robomaze.models.TileType;
 
-import java.awt.*;
+import java.awt.Point;
 import java.util.List;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.DoubleBinding;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
+import javafx.geometry.Insets;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.StrokeType;
 import javafx.util.Duration;
 
 public class GameController {
@@ -68,53 +71,7 @@ public class GameController {
 
     @FXML
     private void initializeGrid() {
-        tiles = new TileType[][]{
-            // Row 0
-            {WALL, WALL, WALL, WALL, WALL, WALL, WALL,
-                WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL},
-            // Row 1
-            {WALL, ROBOT, EMPTY, EMPTY, WALL, EMPTY, EMPTY,
-                EMPTY, EMPTY, EMPTY, WALL, EMPTY, EMPTY, EMPTY, WALL},
-            // Row 2
-            {WALL, WALL, WALL, EMPTY, WALL, EMPTY, WALL,
-                WALL, WALL, EMPTY, WALL, EMPTY, WALL, EMPTY, WALL},
-            // Row 3
-            {WALL, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, WALL,
-                EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, WALL, EMPTY, WALL},
-            // Row 4
-            {WALL, EMPTY, WALL, WALL, WALL, WALL, WALL,
-                EMPTY, WALL, WALL, WALL, EMPTY, WALL, EMPTY, WALL},
-            // Row 5
-            {WALL, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY,
-                EMPTY, WALL, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, WALL},
-            // Row 6
-            {WALL, WALL, WALL, EMPTY, WALL, WALL, WALL,
-                EMPTY, WALL, EMPTY, WALL, WALL, WALL, EMPTY, WALL},
-            // Row 7
-            {WALL, EMPTY, EMPTY, EMPTY, WALL, EMPTY, EMPTY,
-                EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, WALL, EMPTY, WALL},
-            // Row 8
-            {WALL, EMPTY, WALL, EMPTY, WALL, EMPTY, WALL,
-                WALL, WALL, WALL, WALL, EMPTY, WALL, EMPTY, WALL},
-            // Row 9
-            {WALL, EMPTY, WALL, EMPTY, EMPTY, EMPTY, EMPTY,
-                EMPTY, EMPTY, EMPTY, WALL, EMPTY, EMPTY, EMPTY, WALL},
-            // Row 10
-            {WALL, EMPTY, WALL, WALL, WALL, WALL, WALL,
-                WALL, WALL, EMPTY, WALL, WALL, WALL, EMPTY, WALL},
-            // Row 11
-            {WALL, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY,
-                EMPTY, EMPTY, WALL, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, WALL},
-            // Row 12
-            {WALL, WALL, WALL, WALL, WALL, EMPTY, WALL,
-                EMPTY, WALL, WALL, WALL, WALL, WALL, EMPTY, WALL},
-            // Row 13
-            {WALL, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, WALL,
-                EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, TARGET, WALL},
-            // Row 14
-            {WALL, WALL, WALL, WALL, WALL, WALL, WALL,
-                WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL}
-        };
+        tiles = MazeGeneration.generateMaze(15, 15);
         originalTiles = new TileType[tiles.length][];
 
         for (int i = 0; i < tiles.length; i++) {
@@ -128,17 +85,30 @@ public class GameController {
         btnTurnLeft.setDisable(false);
         btnTurnRight.setDisable(false);
         btnViewPath.setDisable(false);
-
+        setGridColors();
     }
 
     @FXML
     private void setGridColors() {
         grid.getChildren().clear();
 
-        for (int row = 0; row < tiles.length; row++) {
-            for (int col = 0; col < tiles[row].length; col++) {
+        int rows = tiles.length;
+        int cols = tiles[0].length;
+
+        DoubleBinding cellSize = Bindings.createDoubleBinding(() -> {
+            Insets insets = grid.getInsets();
+            double availableWidth = grid.getWidth() - insets.getLeft() - insets.getRight();
+            double availableHeight = grid.getHeight() - insets.getTop() - insets.getBottom();
+            return Math.max(0, Math.floor(Math.min(availableWidth / cols, availableHeight / rows)));
+        }, grid.widthProperty(), grid.heightProperty(), grid.insetsProperty());
+
+        for (int row = 0; row < rows; row++) {
+            for (int col = 0; col < cols; col++) {
                 TileType type = tiles[row][col];
-                Rectangle cell = new Rectangle(30, 30);
+                Rectangle cell = new Rectangle();
+                cell.widthProperty().bind(cellSize);
+                cell.heightProperty().bind(cellSize);
+                cell.setStrokeType(StrokeType.INSIDE);
 
                 switch (type) {
                     case WALL ->
@@ -193,6 +163,7 @@ public class GameController {
         btnRun.setOnAction(e -> runMoves(listMoves.getItems()));
         btnReset.setOnAction(e -> reset());
         btnViewPath.setOnAction(e -> viewFastestPath());
+        btnNewMaze.setOnAction(e -> generateMaze());
     }
 
     private void reset() {
@@ -366,18 +337,65 @@ public class GameController {
         }
     }
 
-    private void calculateFastestPath() {
-        Point start = getRobot(originalTiles);
-        Point target = getTarget(originalTiles);
+    private void generateMaze() {
+        Dialog<int[]> dialog = new Dialog<>();
 
-        List<Point> path = FastestPathAlg.shortestPath(originalTiles, start, target);
-        int moves = FastestPathAlg.calculateMoves(path);
+        dialog.setTitle("Maze Settings");
+        dialog.setHeaderText(
+                "Enter the maze dimensions.\nRows and columns must be odd numbers."
+        );
+        dialog.setResizable(false);
 
-        if (path.isEmpty()) {
-            labelShortest.setText("Shortest: No path found");
-        } else {
-            labelShortest.setText("Shortest: " + moves);
-        }
+
+        TextField rowsField = new TextField("15");
+        TextField colsField = new TextField("15");
+
+        GridPane grid = new GridPane();
+        grid.setHgap(10);
+        grid.setVgap(10);
+
+        grid.add(new Label("Rows:"), 0, 0);
+        grid.add(rowsField, 1, 0);
+        grid.add(new Label("Columns:"), 0, 1);
+        grid.add(colsField, 1, 1);
+
+        dialog.getDialogPane().setContent(grid);
+        dialog.getDialogPane().getButtonTypes().addAll(
+                ButtonType.OK, ButtonType.CANCEL
+        );
+
+        dialog.setResultConverter(button -> {
+            if (button == ButtonType.OK) {
+                try {
+                    int rows = Integer.parseInt(rowsField.getText());
+                    int cols = Integer.parseInt(colsField.getText());
+
+                    if (rows < 5 || cols < 5
+                            || rows % 2 == 0 || cols % 2 == 0) {
+                        return null;
+                    }
+
+                    return new int[]{rows, cols};
+                } catch (NumberFormatException e) {
+                    return null;
+                }
+            }
+
+            return null;
+        });
+
+        dialog.showAndWait().ifPresent(dimensions -> {
+            int rows = dimensions[0];
+            int cols = dimensions[1];
+
+            tiles = MazeGeneration.generateMaze(rows, cols);
+            originalTiles = new TileType[tiles.length][];
+
+            for (int i = 0; i < tiles.length; i++) {
+                originalTiles[i] = tiles[i].clone();
+            }
+            setGridColors();
+        });
     }
 
     private void viewFastestPath() {
