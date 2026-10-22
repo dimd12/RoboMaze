@@ -1,5 +1,6 @@
 package com.robomaze.algorithms;
 
+import com.robomaze.models.Maze;
 import com.robomaze.models.TileType;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -12,24 +13,25 @@ public class MazeGeneration {
     private static final Random RANDOM = new Random();
 
     private static final int[][] DIRECTIONS = {
-        {-2, 0},
-        {2, 0},
-        {0, -2},
-        {0, 2}
+            {-2, 0},
+            {2, 0},
+            {0, -2},
+            {0, 2}
     };
 
-    public static TileType[][] generateMaze(int rows, int cols) {
-        if (rows < 5 || cols < 5 || rows % 2 == 0 || cols % 2 == 0) {
+    public static Maze generateMaze(int rows, int cols) {
+        if (rows < 5 || cols < 5
+                || rows % 2 == 0 || cols % 2 == 0) {
             throw new IllegalArgumentException(
                     "Maze dimensions must be odd and at least 5."
             );
         }
 
-        TileType[][] maze = new TileType[rows][cols];
+        TileType[][] tiles = new TileType[rows][cols];
 
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < cols; col++) {
-                maze[row][col] = TileType.WALL;
+                tiles[row][col] = TileType.WALL;
             }
         }
 
@@ -40,7 +42,7 @@ public class MazeGeneration {
         int startCol = 1;
 
         visited[startRow][startCol] = true;
-        maze[startRow][startCol] = TileType.EMPTY;
+        tiles[startRow][startCol] = TileType.EMPTY;
         stack.push(new int[]{startRow, startCol});
 
         while (!stack.isEmpty()) {
@@ -57,7 +59,6 @@ public class MazeGeneration {
                 if (nextRow > 0 && nextRow < rows - 1
                         && nextCol > 0 && nextCol < cols - 1
                         && !visited[nextRow][nextCol]) {
-
                     neighbours.add(new int[]{nextRow, nextCol});
                 }
             }
@@ -72,8 +73,8 @@ public class MazeGeneration {
                 int wallRow = (row + nextRow) / 2;
                 int wallCol = (col + nextCol) / 2;
 
-                maze[wallRow][wallCol] = TileType.EMPTY;
-                maze[nextRow][nextCol] = TileType.EMPTY;
+                tiles[wallRow][wallCol] = TileType.EMPTY;
+                tiles[nextRow][nextCol] = TileType.EMPTY;
 
                 visited[nextRow][nextCol] = true;
                 stack.push(next);
@@ -81,19 +82,20 @@ public class MazeGeneration {
                 stack.pop();
             }
         }
+
         for (int row = 0; row < rows; row++) {
-            maze[row][0] = TileType.WALL;
-            maze[row][cols - 1] = TileType.WALL;
+            tiles[row][0] = TileType.WALL;
+            tiles[row][cols - 1] = TileType.WALL;
         }
 
         for (int col = 0; col < cols; col++) {
-            maze[0][col] = TileType.WALL;
-            maze[rows - 1][col] = TileType.WALL;
+            tiles[0][col] = TileType.WALL;
+            tiles[rows - 1][col] = TileType.WALL;
         }
 
-        maze[1][1] = TileType.ROBOT;
-        maze[rows - 2][cols - 2] = TileType.TARGET;
+        tiles[1][1] = TileType.ROBOT;
+        tiles[rows - 2][cols - 2] = TileType.TARGET;
 
-        return maze;
+        return new Maze(tiles);
     }
 }
