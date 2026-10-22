@@ -11,16 +11,54 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" style="-fx-background-color: #070B12;                    -fx-padding: 10;                    -fx-text-fill: #E6EAF0;                    -fx-font-family: 'Consolas';" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.robomaze.controllers.GameController">
+<BorderPane maxHeight="-Infinity"
+            maxWidth="-Infinity"
+            minHeight="-Infinity"
+            minWidth="-Infinity"
+            prefHeight="650.0"
+            prefWidth="900.0"
+            style="-fx-background-color: #070B12;
+                   -fx-padding: 10;
+                   -fx-text-fill: #E6EAF0;
+                   -fx-font-family: 'Consolas';"
+            xmlns="http://javafx.com/javafx/26"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.robomaze.controllers.GameController">
 
     <top>
-        <HBox alignment="CENTER" minWidth="-Infinity" prefHeight="64.0" prefWidth="839.0" spacing="600.0" style="-fx-background-color: #111720;                      -fx-background-radius: 15;                      -fx-border-color: #343D49;                      -fx-border-radius: 15;                      -fx-border-width: 1;                      -fx-padding: 10;" BorderPane.alignment="CENTER">
+        <HBox alignment="CENTER"
+              minWidth="-Infinity"
+              prefHeight="64.0"
+              prefWidth="839.0"
+              spacing="575.0"
+              style="-fx-background-color: #111720;
+              -fx-background-radius: 15;
+              -fx-border-color: #343D49;
+              -fx-border-radius: 15;
+              -fx-border-width: 1;
+              -fx-padding: 10;"
+              BorderPane.alignment="CENTER">
             <children>
-                <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="-Infinity" style="-fx-text-fill: #E6EAF0;" text="Robot Maze" textAlignment="RIGHT" wrapText="true">
+                <Label alignment="CENTER_RIGHT"
+                       contentDisplay="RIGHT"
+                       maxWidth="-Infinity"
+                       style="-fx-text-fill: #E6EAF0;"
+                       text="Robot Maze"
+                       textAlignment="RIGHT"
+                       wrapText="true">
                     <font>
                         <Font name="Consolas Bold" size="30.0" />
                     </font>
                 </Label>
+            <Button fx:id="btnHome"
+                    mnemonicParsing="false"
+                    prefHeight="50.0"
+                    prefWidth="75.0"
+                    text="Home">
+               <font>
+                  <Font name="Consolas Bold" size="18.0" />
+               </font>
+            </Button>
             </children>
             <BorderPane.margin>
                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -29,7 +67,17 @@
     </top>
 
     <left>
-        <VBox alignment="TOP_CENTER" prefHeight="586.0" prefWidth="211.0" spacing="10.0" style="-fx-background-color: #111720;                      -fx-background-radius: 15;                      -fx-border-color: #343D49;                      -fx-border-radius: 15;                      -fx-border-width: 1;                      -fx-padding: 10;" BorderPane.alignment="CENTER">
+        <VBox alignment="TOP_CENTER"
+              prefHeight="586.0"
+              prefWidth="211.0"
+              spacing="10.0"
+              style="-fx-background-color: #111720;
+                     -fx-background-radius: 15;
+                     -fx-border-color: #343D49;
+                     -fx-border-radius: 15;
+                     -fx-border-width: 1;
+                     -fx-padding: 10;"
+              BorderPane.alignment="CENTER">
             <children>
                 <Label style="-fx-text-fill: #E6EAF0;" text="LEVEL INFO">
                     <font>
@@ -39,7 +87,10 @@
 
                 <Line endX="110.5" startX="-100.0" stroke="#343D49" />
 
-                <VBox alignment="CENTER_LEFT" prefHeight="93.0" prefWidth="212.0" spacing="6.5">
+                <VBox alignment="CENTER_LEFT"
+                      prefHeight="93.0"
+                      prefWidth="212.0"
+                      spacing="6.5">
                     <children>
                         <Label fx:id="labelMoves" style="-fx-text-fill: #E6EAF0;" text="Moves: 0">
                             <font>
@@ -60,38 +111,10 @@
 
                 <Line endX="111.29289245605469" startX="-100.0" startY="-0.6248805522918701" stroke="#343D49" />
 
-                <Label style="-fx-text-fill: #E6EAF0;" text="LEGEND">
-                    <font>
-                        <Font name="Consolas Bold" size="20.0" />
-                    </font>
-                </Label>
-
-                <VBox prefHeight="200.0" prefWidth="100.0" spacing="6.5" style="-fx-font-family: 'Consolas';">
-                    <children>
-                        <Label style="-fx-text-fill: #E6EAF0;" text="⬛ Wall">
-                            <font>
-                                <Font size="16.0" />
-                            </font>
-                        </Label>
-
-                        <Label style="-fx-text-fill: #E6EAF0;" text="⬜ Floor">
-                            <font>
-                                <Font size="16.0" />
-                            </font>
-                        </Label>
-
-                        <Label style="-fx-text-fill: #E6EAF0;" text="🤖 Robot">
-                            <font>
-                                <Font name="Consolas" size="16.0" />
-                            </font>
-                        </Label>
-
-                        <Label style="-fx-text-fill: #E6EAF0;" text="🟩 Target">
-                            <font>
-                                <Font size="16.0" />
-                            </font>
-                        </Label>
-                    </children>
+                <VBox prefHeight="200.0"
+                      prefWidth="100.0"
+                      spacing="6.5"
+                      style="-fx-font-family: 'Consolas';">
                     <VBox.margin>
                         <Insets left="10.0" />
                     </VBox.margin>
@@ -104,9 +127,21 @@
     </left>
 
     <right>
-        <VBox prefHeight="586.0" prefWidth="217.0" spacing="10.0" style="-fx-background-color: #111720;                      -fx-background-radius: 15;                      -fx-border-color: #343D49;                      -fx-border-radius: 15;                      -fx-border-width: 1;                      -fx-padding: 10;" BorderPane.alignment="CENTER">
+        <VBox prefHeight="586.0"
+              prefWidth="217.0"
+              spacing="10.0"
+              style="-fx-background-color: #111720;
+              -fx-background-radius: 15;
+              -fx-border-color: #343D49;
+              -fx-border-radius: 15;
+              -fx-border-width: 1;
+              -fx-padding: 10;"
+              BorderPane.alignment="CENTER">
             <children>
-                <VBox alignment="TOP_CENTER" prefHeight="258.0" prefWidth="207.0" spacing="10.0">
+                <VBox alignment="TOP_CENTER"
+                      prefHeight="258.0"
+                      prefWidth="207.0"
+                      spacing="10.0">
                     <children>
                         <Label style="-fx-text-fill: #E6EAF0;" text="Program">
                             <font>
@@ -114,7 +149,12 @@
                             </font>
                         </Label>
 
-                        <ListView fx:id="listMoves" prefHeight="210.0" prefWidth="207.0" style="-fx-background-radius: 10;                                          -fx-border-radius: 10;" />
+                        <ListView fx:id="listMoves"
+                                  prefHeight="210.0"
+                                  prefWidth="207.0"
+                                  style="-fx-background-radius: 10;
+                                         -fx-border-radius: 10;
+                                         -fx-font-family: Consolas" />
                     </children>
                     <VBox.margin>
                         <Insets right="10.0" />
@@ -123,13 +163,30 @@
 
                 <Line endX="111.29289245605469" startX="-100.0" startY="-0.6248805522918701" stroke="#343D49" />
 
-                <VBox alignment="TOP_CENTER" prefHeight="139.0" prefWidth="207.0" spacing="10.0" style="-fx-font-family: 'Consolas';                              -fx-font-weight: 700;">
+                <VBox alignment="TOP_CENTER"
+                      prefHeight="139.0"
+                      prefWidth="207.0"
+                      spacing="10.0"
+                      style="-fx-font-family: 'Consolas';
+                             -fx-font-weight: 700;">
                     <children>
-                        <Button fx:id="btnForward" mnemonicParsing="false" prefHeight="26.0" prefWidth="109.0" text="FORWARD" />
+                        <Button fx:id="btnForward"
+                                mnemonicParsing="false"
+                                prefHeight="26.0"
+                                prefWidth="109.0"
+                                text="FORWARD" />
 
-                        <Button fx:id="btnTurnLeft" mnemonicParsing="false" prefHeight="26.0" prefWidth="109.0" text="TURN LEFT" />
+                        <Button fx:id="btnTurnLeft"
+                                mnemonicParsing="false"
+                                prefHeight="26.0"
+                                prefWidth="109.0"
+                                text="TURN LEFT" />
 
-                        <Button fx:id="btnTurnRight" mnemonicParsing="false" prefHeight="26.0" prefWidth="109.0" text="TURN RIGHT" />
+                        <Button fx:id="btnTurnRight"
+                                mnemonicParsing="false"
+                                prefHeight="26.0"
+                                prefWidth="109.0"
+                                text="TURN RIGHT" />
                     </children>
                     <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
@@ -143,11 +200,29 @@
     </right>
 
     <bottom>
-        <VBox prefHeight="155.0" prefWidth="900.0" spacing="5.0" style="-fx-background-color: #111720;                      -fx-background-radius: 15;                      -fx-border-color: #343D49;                      -fx-border-radius: 15;                      -fx-border-width: 1;                      -fx-padding: 10;                      -fx-font-family: 'Consolas';" BorderPane.alignment="CENTER">
+        <VBox prefHeight="155.0"
+              prefWidth="900.0"
+              spacing="5.0"
+              style="-fx-background-color: #111720;
+                     -fx-background-radius: 15;
+                     -fx-border-color: #343D49;
+                     -fx-border-radius: 15;
+                     -fx-border-width: 1;
+                     -fx-padding: 10;
+                     -fx-font-family: 'Consolas';"
+              BorderPane.alignment="CENTER">
             <children>
-                <HBox alignment="CENTER_LEFT" prefHeight="42.0" prefWidth="900.0" spacing="500.0" style="-fx-background-color: #111720;">
+                <HBox alignment="CENTER_LEFT"
+                      prefHeight="42.0"
+                      prefWidth="900.0"
+                      spacing="500.0"
+                      style="-fx-background-color: #111720;">
                     <children>
-                        <Label prefHeight="49.0" prefWidth="354.0" style="-fx-text-fill: #E6EAF0;" text="PROGRAM CONTROLS" wrapText="true">
+                        <Label prefHeight="49.0"
+                               prefWidth="354.0"
+                               style="-fx-text-fill: #E6EAF0;"
+                               text="PROGRAM CONTROLS"
+                               wrapText="true">
                             <font>
                                 <Font name="Consolas Bold" size="30.0" />
                             </font>
@@ -158,27 +233,46 @@
                     </VBox.margin>
                 </HBox>
 
-                <HBox alignment="CENTER" prefHeight="60.0" prefWidth="900.0" spacing="50.0">
+                <HBox alignment="CENTER"
+                      prefHeight="60.0"
+                      prefWidth="900.0"
+                      spacing="50.0">
                     <children>
-                        <Button fx:id="btnRun" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="▶ RUN">
+                        <Button fx:id="btnRun"
+                                mnemonicParsing="false"
+                                prefHeight="50.0"
+                                prefWidth="150.0"
+                                text="▶ RUN">
                             <font>
                                 <Font name="Consolas Bold" size="18.0" />
                             </font>
                         </Button>
 
-                        <Button fx:id="btnViewPath" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Fastest Path">
+                        <Button fx:id="btnViewPath"
+                                mnemonicParsing="false"
+                                prefHeight="50.0"
+                                prefWidth="150.0"
+                                text="Fastest Path">
                             <font>
                                 <Font name="Consolas Bold" size="18.0" />
                             </font>
                         </Button>
 
-                        <Button fx:id="btnReset" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Reset">
+                        <Button fx:id="btnReset"
+                                mnemonicParsing="false"
+                                prefHeight="50.0"
+                                prefWidth="150.0"
+                                text="Reset">
                             <font>
                                 <Font name="Consolas Bold" size="18.0" />
                             </font>
                         </Button>
 
-                        <Button fx:id="btnNewMaze" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="New Maze">
+                        <Button fx:id="btnNewMaze"
+                                mnemonicParsing="false"
+                                prefHeight="50.0"
+                                prefWidth="150.0"
+                                text="New Maze">
                             <font>
                                 <Font name="Consolas Bold" size="18.0" />
                             </font>
@@ -189,7 +283,8 @@
                     </VBox.margin>
                 </HBox>
 
-                <Label style="-fx-text-fill: #E6EAF0;" text="Ready? Add commands and press run!">
+                <Label style="-fx-text-fill: #E6EAF0;"
+                       text="Ready? Add commands and press run!">
                     <VBox.margin>
                         <Insets left="50.0" top="10.0" />
                     </VBox.margin>
@@ -202,7 +297,16 @@
     </bottom>
 
     <center>
-        <GridPane fx:id="grid" alignment="CENTER" minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: #111720;                          -fx-background-radius: 15;                          -fx-padding: 5;" BorderPane.alignment="CENTER">
+        <GridPane fx:id="grid"
+                  alignment="CENTER"
+                  minHeight="0.0"
+                  minWidth="0.0"
+                  prefHeight="0.0"
+                  prefWidth="0.0"
+                  style="-fx-background-color: #111720;
+                         -fx-background-radius: 15;
+                         -fx-padding: 5;"
+                  BorderPane.alignment="CENTER">
             <BorderPane.margin>
                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
             </BorderPane.margin>

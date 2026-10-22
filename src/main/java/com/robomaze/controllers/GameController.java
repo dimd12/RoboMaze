@@ -1,5 +1,6 @@
 package com.robomaze.controllers;
 
+import com.robomaze.App;
 import com.robomaze.algorithms.FastestPathAlg;
 import com.robomaze.algorithms.MazeGeneration;
 import com.robomaze.models.Maze;
@@ -7,6 +8,7 @@ import com.robomaze.models.Robot;
 import com.robomaze.services.GameServices;
 import com.robomaze.services.MazeRenderer;
 import java.awt.Point;
+import java.io.IOException;
 import java.util.List;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
@@ -33,6 +35,9 @@ public class GameController {
     private Maze maze;
 
     public Maze originalMaze;
+
+    @FXML
+    private Button btnHome;
 
     @FXML
     private Button btnForward;
@@ -80,6 +85,14 @@ public class GameController {
     }
 
     /**
+     * Switches to the main menu screen.
+     */
+    @FXML
+    private void switchToMenu() throws IOException {
+        App.setRoot("MainMenu");
+    }
+
+    /**
      * Sets up the actions for the buttons.
      */
     private void setActions() {
@@ -90,6 +103,13 @@ public class GameController {
         btnReset.setOnAction(e -> reset());
         btnViewPath.setOnAction(e -> viewFastestPath());
         btnNewMaze.setOnAction(e -> MazeRenderer.generateMaze(this));
+        btnHome.setOnAction(e -> {
+            try {
+                switchToMenu();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
     }
 
     /**
