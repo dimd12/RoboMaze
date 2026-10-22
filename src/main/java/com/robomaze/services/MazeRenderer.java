@@ -1,6 +1,5 @@
 package com.robomaze.services;
 
-import static com.robomaze.models.TileType.EMPTY;
 import static com.robomaze.models.TileType.ROBOT;
 import static com.robomaze.models.TileType.TARGET;
 import static com.robomaze.models.TileType.WALL;
@@ -121,7 +120,7 @@ public class MazeRenderer {
      * Creates an ImageView sprite for the given name and adds it to the
      * GridPane.
      *
-     * @param name the name of file containing the sprite image
+     * @param name the name of the file containing the sprite image
      * @param grid the GridPane where the Maze is to add the sprite to
      * @param maze the Maze to get the dimensions from
      * @return the created ImageView sprite

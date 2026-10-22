@@ -11,6 +11,7 @@ import java.util.List;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.GridPane;
@@ -98,7 +99,8 @@ public class GameController {
      */
     private void addMove(String move) {
         listMoves.getItems().add(move);
-        labelMoves.setText("Moves: " + robot.getMoves());
+        labelMoves.setText("Moves: " + listMoves.getItems().size());
+        robot.move();
     }
 
     /**
@@ -114,6 +116,7 @@ public class GameController {
                 maze,
                 originalMaze
         );
+
     }
 
     /**
@@ -189,4 +192,5 @@ public class GameController {
         btnTurnRight.setDisable(true);
         btnViewPath.setDisable(true);
     }
+
 }

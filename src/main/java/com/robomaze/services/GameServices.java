@@ -4,6 +4,7 @@ import static com.robomaze.models.TileType.EMPTY;
 import static com.robomaze.models.TileType.ROBOT;
 import static com.robomaze.models.TileType.TARGET;
 
+import com.robomaze.algorithms.FastestPathAlg;
 import com.robomaze.models.Maze;
 import com.robomaze.models.Robot;
 import com.robomaze.models.TileType;
@@ -11,6 +12,10 @@ import java.awt.Point;
 import java.util.List;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
 import javafx.scene.layout.GridPane;
 import javafx.util.Duration;
 
@@ -40,9 +45,8 @@ public class GameServices {
     }
 
     /**
-     * Runs the moves of the robot in the maze, using the Timeline javaFX object
-     * to make the robot change its position and orientation based on the
-     * commands.
+     * Runs the robot's moves in the maze using a JavaFX Timeline to update
+     * its position and orientation based on the commands.
      *
      * @param moves the moves to run
      * @param robot the robot to run the moves for
@@ -58,12 +62,14 @@ public class GameServices {
             Maze maze,
             Maze originalMaze) {
 
+        // Create a snapshot so the commands remain unchanged during playback.
         List<String> commands = List.copyOf(moves);
 
         if (commands.isEmpty()) {
             return null;
         }
 
+        // Track which command should be executed in the next timeline cycle.
         final int[] index = {0};
 
         Timeline timeline = new Timeline(
@@ -71,18 +77,40 @@ public class GameServices {
                     String move = commands.get(index[0]++);
 
                     switch (move) {
-                        case "FORWARD" ->
+                        case "FORWARD":
                             forward(robot, grid, maze, originalMaze);
-                        case "TURN_LEFT" ->
+
+                            // Check for a win after each forward move.
+                            boolean winStatus = checkWinStatus(maze, originalMaze);
+                            if (winStatus) {
+                                Dialog<String> dialog = new Dialog<>();
+                                dialog.setTitle("Congratulations!");
+                                dialog.setHeaderText("You won!");
+                                dialog.setContentText("You completed the maze in " + moves.size() + " moves.\n" +
+                                        "Shortest number of moves: " +
+                                        FastestPathAlg.calculateMoves(
+                                                FastestPathAlg.shortestPath(maze, getRobot(originalMaze), getTarget(originalMaze))));
+                                Button btnOk = new Button("OK");
+                                btnOk.setOnAction(e -> dialog.close());
+                                dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
+                                btnOk.setDefaultButton(true);
+                                Platform.runLater(dialog::showAndWait);
+                                return;
+                            }
+                            break;
+                        case "TURN_LEFT":
                             turnLeft(robot, grid, maze);
-                        case "TURN_RIGHT" ->
+                            break;
+                        case "TURN_RIGHT":
                             turnRight(robot, grid, maze);
-                        default -> {
-                        }
+                            break;
+                        default:
+                            break;
                     }
                 })
         );
 
+        // Execute one command every 250 milliseconds.
         timeline.setCycleCount(commands.size());
         timeline.play();
 
@@ -238,5 +266,16 @@ public class GameServices {
         }
 
         throw new IllegalStateException("Robot not found");
+    }
+
+    /**
+     * Checks if the robot has reached the target position in the maze.
+     *
+     * @param maze         the maze to check the robot position in
+     * @param originalMaze the original maze to get the target position from
+     * @return true if the robot has reached the target position, false otherwise
+     */
+    public static boolean checkWinStatus(Maze maze, Maze originalMaze) {
+        return GameServices.getRobot(maze).equals(GameServices.getTarget(originalMaze));
     }
 }
