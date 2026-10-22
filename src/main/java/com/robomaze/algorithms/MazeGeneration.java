@@ -9,7 +9,10 @@ import java.util.Random;
 import java.util.Stack;
 
 /**
- * Generates a maze using the randomized depth-first search algorithm.
+ * Generates a maze using randomized depth-first search. All tiles are initially
+ * walls, and passages are carved by exploring unvisited cells in a randomized
+ * order. The outer boundary remains closed, with the robot placed at the
+ * starting cell and the target placed at the opposite interior corner.
  *
  * @author Adrian Manoil
  * @id 2503832
@@ -20,19 +23,22 @@ public class MazeGeneration {
 
     private static final Random RANDOM = new Random();
 
+    // Directions for moving between cells, skipping the walls between them.
     private static final int[][] DIRECTIONS = {
-            {-2, 0},
-            {2, 0},
-            {0, -2},
-            {0, 2}
+        {-2, 0},
+        {2, 0},
+        {0, -2},
+        {0, 2}
     };
 
     /**
-     * Generates a maze using the randomized depth-first search algorithm.
+     * Generates a maze with a robot starting position and a target using
+     * Depth-First Search (DFS).
      *
-     * @param rows the number of rows in the maze
-     * @param cols the number of columns in the maze
+     * @param rows the number of rows (must be odd and at least 5)
+     * @param cols the number of columns (must be odd and at least 5)
      * @return the generated maze
+     * @throws IllegalArgumentException if the dimensions are invalid
      * @see Maze
      */
     public static Maze generateMaze(int rows, int cols) {
@@ -43,6 +49,7 @@ public class MazeGeneration {
             );
         }
 
+        // Initialize the maze with walls.
         TileType[][] tiles = new TileType[rows][cols];
 
         for (int row = 0; row < rows; row++) {
@@ -54,6 +61,7 @@ public class MazeGeneration {
         boolean[][] visited = new boolean[rows][cols];
         Stack<int[]> stack = new Stack<>();
 
+        // Start generating the maze from the top-left interior cell.
         int startRow = 1;
         int startCol = 1;
 
@@ -68,6 +76,7 @@ public class MazeGeneration {
 
             List<int[]> neighbours = new ArrayList<>();
 
+            // Find unvisited neighbouring cells inside the maze.
             for (int[] direction : DIRECTIONS) {
                 int nextRow = row + direction[0];
                 int nextCol = col + direction[1];
@@ -80,6 +89,7 @@ public class MazeGeneration {
             }
 
             if (!neighbours.isEmpty()) {
+                // Choose a random neighbour and remove the wall between them.
                 Collections.shuffle(neighbours, RANDOM);
 
                 int[] next = neighbours.get(0);
@@ -95,10 +105,12 @@ public class MazeGeneration {
                 visited[nextRow][nextCol] = true;
                 stack.push(next);
             } else {
+                // Backtrack when there are no unvisited neighbours.
                 stack.pop();
             }
         }
 
+        // Keep the outer boundary closed.
         for (int row = 0; row < rows; row++) {
             tiles[row][0] = TileType.WALL;
             tiles[row][cols - 1] = TileType.WALL;
@@ -109,6 +121,7 @@ public class MazeGeneration {
             tiles[rows - 1][col] = TileType.WALL;
         }
 
+        // Set the robot's starting position and the target.
         tiles[1][1] = TileType.ROBOT;
         tiles[rows - 2][cols - 2] = TileType.TARGET;
 

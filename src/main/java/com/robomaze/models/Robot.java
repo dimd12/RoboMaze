@@ -19,8 +19,8 @@ public class Robot {
 
     /**
      * Constructs a new Robot object with the specified row and column,
-     * resetting the number of moves to zero
-     * and setting the initial direction to "RIGHT".
+     * resetting the number of moves to zero and setting the initial direction
+     * to "RIGHT".
      *
      * @param row the row position of the robot
      * @param col the column position of the robot

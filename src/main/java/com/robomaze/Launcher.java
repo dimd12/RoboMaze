@@ -8,8 +8,8 @@ package com.robomaze;
  * @author Sofia Martins Castro e Moura
  * @id 2476843
  */
-
 public class Launcher {
+
     public static void main(String[] args) {
         App.main(args);
     }

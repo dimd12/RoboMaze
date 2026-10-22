@@ -27,7 +27,7 @@ public class MenuController {
     @FXML
     /*
     * Switches to the game screen.
-    */
+     */
     private void switchToGame() throws IOException {
         App.setRoot("GameMenu");
     }

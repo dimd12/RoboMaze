@@ -1,4 +1,3 @@
-
 package com.robomaze.controllers;
 
 import com.robomaze.algorithms.FastestPathAlg;
@@ -128,8 +127,8 @@ public class GameController {
     }
 
     /**
-     * Resets the game by stopping the timeline,
-     * clearing the maze, and resetting the robot's position.
+     * Resets the game by stopping the timeline, clearing the maze, and
+     * resetting the robot's position.
      */
     public void reset() {
         stopTimeline();

@@ -6,7 +6,7 @@ import java.awt.Point;
 import java.util.*;
 
 /**
- * Finds the shortest path in a maze using depth-first search.
+ * Finds the shortest path through a maze and calculates its movement cost.
  *
  * @author Adrian Manoil
  * @id 2503832
@@ -19,12 +19,12 @@ public class FastestPathAlg {
     public static final int[] DIRECTIONS_COLS = {0, 0, -1, 1};
 
     /**
-     * Finds the shortest path in a maze using depth-first search.
+     * Finds the shortest path using Breadth-First Search (BFS).
      *
-     * @param maze the maze to find the shortest path in
+     * @param maze the maze to search
      * @param start the starting point
-     * @param end the ending point
-     * @return the shortest path as a list of points
+     * @param end the destination point
+     * @return the shortest path, or an empty list if no path exists
      * @see Maze
      */
     public static List<Point> shortestPath(
@@ -35,7 +35,6 @@ public class FastestPathAlg {
 
         boolean[][] visited = new boolean[rows][cols];
         Point[][] previous = new Point[rows][cols];
-
         Queue<Point> queue = new LinkedList<>();
 
         queue.add(start);
@@ -48,6 +47,7 @@ public class FastestPathAlg {
                 break;
             }
 
+            // Check all four neighbouring tiles.
             for (int i = 0; i < 4; i++) {
                 int newRow = current.x + DIRECTIONS_ROWS[i];
                 int newCol = current.y + DIRECTIONS_COLS[i];
@@ -72,6 +72,7 @@ public class FastestPathAlg {
             return Collections.emptyList();
         }
 
+        // Reconstruct the path by following predecessors from end to start.
         List<Point> path = new ArrayList<>();
         Point current = end;
 
@@ -85,9 +86,9 @@ public class FastestPathAlg {
     }
 
     /**
-     * Calculates the number of direction changes in a path.
+     * Counts the direction changes in a path.
      *
-     * @param path the path to calculate the direction changes for
+     * @param path the path to check
      * @return the number of direction changes
      */
     public static int calculateDirChanges(List<Point> path) {
@@ -114,11 +115,11 @@ public class FastestPathAlg {
     }
 
     /**
-     * Calculates the total number of moves required to traverse a path, including direction changes.
+     * Calculates the total moves, counting each step and direction change.
      *
-     * @param path the path to calculate the moves for
-     * @return the total number of moves
-     * @see FastestPathAlg#calculateDirChanges(List)
+     * @param path the path to check
+     * @return the number of steps plus direction changes
+     * @see #calculateDirChanges(List)
      */
     public static int calculateMoves(List<Point> path) {
         if (path == null || path.isEmpty()) {

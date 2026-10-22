@@ -66,7 +66,8 @@ public class Maze {
      *
      * @param row the row of the tile
      * @param col the column of the tile
-     * @return true if the specified row and column are inside the maze, false otherwise
+     * @return true if the specified row and column are inside the maze, false
+     * otherwise
      */
     public boolean isInside(int row, int col) {
         return row >= 0 && row < getRows()
@@ -78,7 +79,8 @@ public class Maze {
      *
      * @param row the row of the tile
      * @param col the column of the tile
-     * @return true if the specified row and column are walkable, false otherwise
+     * @return true if the specified row and column are walkable, false
+     * otherwise
      */
     public boolean isWalkable(int row, int col) {
         return isInside(row, col)
@@ -95,8 +97,7 @@ public class Maze {
     }
 
     /**
-     * Returns a copy of the grid
-     * formed by the maze's tiles.
+     * Returns a copy of the grid formed by the maze's tiles.
      *
      * @return a copy of the grid
      */
@@ -115,7 +116,7 @@ public class Maze {
      *
      * @return a copy of the maze
      */
-    public Maze copy () {
+    public Maze copy() {
         return new Maze(tiles);
     }
 }
