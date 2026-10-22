@@ -35,7 +35,6 @@
     <build>
         <plugins>
 
-            <!-- Java compiler -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -45,63 +44,22 @@
                 </configuration>
             </plugin>
 
-            <!-- JavaFX -->
             <plugin>
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
-                <version>0.0.4</version>
+                <version>0.0.8</version>
 
                 <configuration>
-                    <mainClass>com.robomaze.App</mainClass>
+                    <mainClass>com.robomaze/com.robomaze.Launcher</mainClass>
+                    <launcher>RoboMaze</launcher>
+                    <jlinkImageName>RoboMaze</jlinkImageName>
+                    <jlinkZipName>RoboMaze</jlinkZipName>
+                    <stripDebug>true</stripDebug>
+                    <noManPages>true</noManPages>
+                    <noHeaderFiles>true</noHeaderFiles>
                 </configuration>
-
-                <executions>
-
-                    <!-- Default configuration for running -->
-                    <execution>
-                        <id>default-cli</id>
-                    </execution>
-
-                    <!-- Configuration for manual attach debugging -->
-                    <execution>
-                        <id>debug</id>
-                        <configuration>
-                            <options>
-                                <option>
-                                    -agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=localhost:8000
-                                </option>
-                            </options>
-                        </configuration>
-                    </execution>
-
-                    <!-- Configuration for automatic IDE debugging -->
-                    <execution>
-                        <id>ide-debug</id>
-                        <configuration>
-                            <options>
-                                <option>
-                                    -agentlib:jdwp=transport=dt_socket,server=n,address=${jpda.address}
-                                </option>
-                            </options>
-                        </configuration>
-                    </execution>
-
-                    <!-- Configuration for automatic IDE profiling -->
-                    <execution>
-                        <id>ide-profile</id>
-                        <configuration>
-                            <options>
-                                <option>${profiler.jvmargs.arg1}</option>
-                                <option>${profiler.jvmargs.arg2}</option>
-                                <option>${profiler.jvmargs.arg3}</option>
-                                <option>${profiler.jvmargs.arg4}</option>
-                                <option>${profiler.jvmargs.arg5}</option>
-                            </options>
-                        </configuration>
-                    </execution>
-
-                </executions>
             </plugin>
+
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -109,9 +67,6 @@
                 <version>3.6.0</version>
 
                 <configuration>
-                    <!-- The Checkstyle configuration file (2IP90_checks.xml)
-                    must be located in the root directory of your Maven project
-                    (the same directory as pom.xml). -->
                     <configLocation>2IP90_checks.xml</configLocation>
                     <failOnViolation>false</failOnViolation>
                     <failsOnError>true</failsOnError>
