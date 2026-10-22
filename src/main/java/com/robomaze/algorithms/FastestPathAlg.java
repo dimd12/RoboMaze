@@ -1,20 +1,20 @@
 package com.robomaze.algorithms;
 
+import com.robomaze.models.Maze;
 import com.robomaze.models.TileType;
 import java.awt.Point;
 import java.util.*;
 
 public class FastestPathAlg {
 
-    // UP, DOWN, LEFT, RIGHT
     public static final int[] DIRECTIONS_ROWS = {-1, 1, 0, 0};
     public static final int[] DIRECTIONS_COLS = {0, 0, -1, 1};
 
     public static List<Point> shortestPath(
-            TileType[][] maze, Point start, Point end) {
+            Maze maze, Point start, Point end) {
 
-        int rows = maze.length;
-        int cols = maze[0].length;
+        int rows = maze.getRows();
+        int cols = maze.getCols();
 
         boolean[][] visited = new boolean[rows][cols];
         Point[][] previous = new Point[rows][cols];
@@ -40,7 +40,7 @@ public class FastestPathAlg {
                     continue;
                 }
 
-                if (maze[newRow][newCol] == TileType.WALL
+                if (maze.getTile(newRow, newCol) == TileType.WALL
                         || visited[newRow][newCol]) {
                     continue;
                 }
