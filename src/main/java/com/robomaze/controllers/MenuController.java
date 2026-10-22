@@ -48,8 +48,6 @@ public class MenuController {
             }
         });
 
-        btnQuit.setOnAction(e -> {
-            System.exit(0);
-        });
+        btnQuit.setOnAction(e -> System.exit(0));
     }
 }
