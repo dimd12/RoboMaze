@@ -41,14 +41,14 @@ public class Maze {
     private TileType[][] copyGrid(TileType[][] source) {
         TileType[][] copy = new TileType[source.length][];
 
-        if (source.length == 0) {
-            return copy;
-        }
-
         for (int row = 0; row < source.length; row++) {
             copy[row] = source[row].clone();
         }
 
         return copy;
+    }
+
+    public Maze copy () {
+        return new Maze(tiles);
     }
 }
