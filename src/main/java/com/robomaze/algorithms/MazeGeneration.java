@@ -12,7 +12,7 @@ import java.util.Stack;
  * Generates a maze using randomized depth-first search. All tiles are initially
  * walls, and passages are carved by exploring unvisited cells in a randomized
  * order. The outer boundary remains closed, with the robot placed at the
- * starting cell and the target placed at the opposite interior corner.
+ * starting cell and the target placed in the opposite interior corner.
  *
  * @author Adrian Manoil
  * @id 2503832
@@ -76,7 +76,7 @@ public class MazeGeneration {
 
             List<int[]> neighbours = new ArrayList<>();
 
-            // Find unvisited neighbouring cells inside the maze.
+            // Find unvisited neighboring cells inside the maze.
             for (int[] direction : DIRECTIONS) {
                 int nextRow = row + direction[0];
                 int nextCol = col + direction[1];
@@ -89,10 +89,10 @@ public class MazeGeneration {
             }
 
             if (!neighbours.isEmpty()) {
-                // Choose a random neighbour and remove the wall between them.
+                // Choose a random neighbor and remove the wall between them.
                 Collections.shuffle(neighbours, RANDOM);
 
-                int[] next = neighbours.get(0);
+                int[] next = neighbours.getFirst();
                 int nextRow = next[0];
                 int nextCol = next[1];
 
@@ -105,7 +105,7 @@ public class MazeGeneration {
                 visited[nextRow][nextCol] = true;
                 stack.push(next);
             } else {
-                // Backtrack when there are no unvisited neighbours.
+                // Backtrack when there are no unvisited neighbors.
                 stack.pop();
             }
         }

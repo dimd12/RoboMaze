@@ -88,15 +88,6 @@ public class Maze {
     }
 
     /**
-     * Returns a copy of the maze's tiles.
-     *
-     * @return a copy of the maze's tiles
-     */
-    public TileType[][] getTilesCopy() {
-        return copyGrid(tiles);
-    }
-
-    /**
      * Returns a copy of the grid formed by the maze's tiles.
      *
      * @return a copy of the grid

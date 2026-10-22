@@ -3,10 +3,15 @@ package com.robomaze.algorithms;
 import com.robomaze.models.Maze;
 import com.robomaze.models.TileType;
 import java.awt.Point;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 /**
- * Finds the shortest path through a maze and calculates its movement cost.
+ * Finds the shortest path with the smallest number of tiles
+ * through a maze and calculates its movement cost.
  *
  * @author Adrian Manoil
  * @id 2503832
@@ -15,8 +20,8 @@ import java.util.*;
  */
 public class FastestPathAlg {
 
-    public static final int[] DIRECTIONS_ROWS = {-1, 1, 0, 0};
-    public static final int[] DIRECTIONS_COLS = {0, 0, -1, 1};
+    private static final int[] DIRECTIONS_ROWS = {-1, 1, 0, 0};
+    private static final int[] DIRECTIONS_COLS = {0, 0, -1, 1};
 
     /**
      * Finds the shortest path using Breadth-First Search (BFS).
@@ -47,7 +52,7 @@ public class FastestPathAlg {
                 break;
             }
 
-            // Check all four neighbouring tiles.
+            // Check all four neighboring tiles.
             for (int i = 0; i < 4; i++) {
                 int newRow = current.x + DIRECTIONS_ROWS[i];
                 int newCol = current.y + DIRECTIONS_COLS[i];

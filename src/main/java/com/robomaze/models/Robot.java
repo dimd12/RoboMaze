@@ -1,7 +1,5 @@
 package com.robomaze.models;
 
-import java.awt.Point;
-
 /**
  * Represents the robot in the maze.
  *
