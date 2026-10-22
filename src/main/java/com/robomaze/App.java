@@ -8,7 +8,12 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- * JavaFX App
+ * JavaFX App Launcher
+ *
+ * @author Adrian Manoil
+ * @id 2503832
+ * @author Sofia Martins Castro e Moura
+ * @id 2476843
  */
 public class App extends Application {
 

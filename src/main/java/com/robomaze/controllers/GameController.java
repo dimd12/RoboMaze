@@ -16,6 +16,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.GridPane;
 
+/**
+ * Controller for the game screen.
+ *
+ * @author Adrian Manoil
+ * @id 2503832
+ * @author Sofia Martins Castro e Moura
+ * @id 2476843
+ */
 public class GameController {
 
     @FXML
@@ -58,6 +66,11 @@ public class GameController {
 
     private Timeline timeline;
 
+    /**
+     * Initializes the controller and generates the maze.
+     *
+     * @see MazeGeneration#generateMaze(int, int)
+     */
     @FXML
     private void initialize() {
         originalMaze = MazeGeneration.generateMaze(15, 15);
@@ -66,6 +79,9 @@ public class GameController {
         reset();
     }
 
+    /**
+     * Sets up the actions for the buttons.
+     */
     private void setActions() {
         btnForward.setOnAction(e -> addMove("FORWARD"));
         btnTurnLeft.setOnAction(e -> addMove("TURN_LEFT"));
@@ -76,11 +92,19 @@ public class GameController {
         btnNewMaze.setOnAction(e -> MazeRenderer.generateMaze(this));
     }
 
+    /**
+     * Adds a move to the list of moves and updates the move count label.
+     *
+     * @param move The move to add.
+     */
     private void addMove(String move) {
         listMoves.getItems().add(move);
-        labelMoves.setText("Moves: " + listMoves.getItems().size());
+        labelMoves.setText("Moves: " + robot.getMoves());
     }
 
+    /**
+     * Runs the moves in the list and updates the robot's position.
+     */
     private void runMoves() {
         stopTimeline();
 
@@ -93,6 +117,9 @@ public class GameController {
         );
     }
 
+    /**
+     * Stops the timeline and resets the robot's position.
+     */
     private void stopTimeline() {
         if (timeline != null) {
             timeline.stop();
@@ -100,6 +127,10 @@ public class GameController {
         }
     }
 
+    /**
+     * Resets the game by stopping the timeline,
+     * clearing the maze, and resetting the robot's position.
+     */
     public void reset() {
         stopTimeline();
 
@@ -114,6 +145,9 @@ public class GameController {
         MazeRenderer.renderMaze(List.of(), grid, maze, robot);
     }
 
+    /**
+     * Enables the buttons on the game interface.
+     */
     private void enableButtons() {
         btnRun.setDisable(false);
         btnReset.setDisable(false);
@@ -124,6 +158,11 @@ public class GameController {
         btnViewPath.setDisable(false);
     }
 
+    /**
+     * Views the fastest path in the maze and updates the shortest label.
+     *
+     * @see FastestPathAlg#shortestPath(Maze, Point, Point)
+     */
     private void viewFastestPath() {
         Point start = GameServices.getRobot(originalMaze);
         Point target = GameServices.getTarget(originalMaze);

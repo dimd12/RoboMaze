@@ -8,6 +8,14 @@ import java.util.List;
 import java.util.Random;
 import java.util.Stack;
 
+/**
+ * Generates a maze using the randomized depth-first search algorithm.
+ *
+ * @author Adrian Manoil
+ * @id 2503832
+ * @author Sofia Martins Castro e Moura
+ * @id 2476843
+ */
 public class MazeGeneration {
 
     private static final Random RANDOM = new Random();
@@ -19,6 +27,14 @@ public class MazeGeneration {
             {0, 2}
     };
 
+    /**
+     * Generates a maze using the randomized depth-first search algorithm.
+     *
+     * @param rows the number of rows in the maze
+     * @param cols the number of columns in the maze
+     * @return the generated maze
+     * @see Maze
+     */
     public static Maze generateMaze(int rows, int cols) {
         if (rows < 5 || cols < 5
                 || rows % 2 == 0 || cols % 2 == 0) {

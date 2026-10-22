@@ -5,11 +5,28 @@ import com.robomaze.models.TileType;
 import java.awt.Point;
 import java.util.*;
 
+/**
+ * Finds the shortest path in a maze using depth-first search.
+ *
+ * @author Adrian Manoil
+ * @id 2503832
+ * @author Sofia Martins Castro e Moura
+ * @id 2476843
+ */
 public class FastestPathAlg {
 
     public static final int[] DIRECTIONS_ROWS = {-1, 1, 0, 0};
     public static final int[] DIRECTIONS_COLS = {0, 0, -1, 1};
 
+    /**
+     * Finds the shortest path in a maze using depth-first search.
+     *
+     * @param maze the maze to find the shortest path in
+     * @param start the starting point
+     * @param end the ending point
+     * @return the shortest path as a list of points
+     * @see Maze
+     */
     public static List<Point> shortestPath(
             Maze maze, Point start, Point end) {
 
@@ -67,6 +84,12 @@ public class FastestPathAlg {
         return path;
     }
 
+    /**
+     * Calculates the number of direction changes in a path.
+     *
+     * @param path the path to calculate the direction changes for
+     * @return the number of direction changes
+     */
     public static int calculateDirChanges(List<Point> path) {
         if (path == null || path.size() < 3) {
             return 0;
@@ -90,6 +113,13 @@ public class FastestPathAlg {
         return dirChanges;
     }
 
+    /**
+     * Calculates the total number of moves required to traverse a path, including direction changes.
+     *
+     * @param path the path to calculate the moves for
+     * @return the total number of moves
+     * @see FastestPathAlg#calculateDirChanges(List)
+     */
     public static int calculateMoves(List<Point> path) {
         if (path == null || path.isEmpty()) {
             return 0;
