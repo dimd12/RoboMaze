@@ -1,0 +1,180 @@
+package com.robomaze.services;
+
+import com.robomaze.algorithms.MazeGeneration;
+import com.robomaze.controllers.GameController;
+import com.robomaze.models.Maze;
+import com.robomaze.models.Robot;
+import com.robomaze.models.TileType;
+import java.awt.Point;
+import java.util.List;
+import java.util.Objects;
+
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
+
+import static com.robomaze.models.TileType.*;
+
+public class MazeRenderer {
+
+    public static void renderMaze(List<Point> highlightedPath, GridPane grid, Maze maze, Robot robot) {
+        grid.getChildren().clear();
+        grid.getColumnConstraints().clear();
+        grid.getRowConstraints().clear();
+
+        int rows = maze.getRows();
+        int cols = maze.getCols();
+
+        for (int col = 0; col < cols; col++) {
+            ColumnConstraints constraint = new ColumnConstraints();
+            constraint.setPercentWidth(100.0 / cols);
+            constraint.setHgrow(Priority.ALWAYS);
+            constraint.setFillWidth(true);
+            grid.getColumnConstraints().add(constraint);
+        }
+
+        for (int row = 0; row < rows; row++) {
+            RowConstraints constraint = new RowConstraints();
+            constraint.setPercentHeight(100.0 / rows);
+            constraint.setVgrow(Priority.ALWAYS);
+            constraint.setFillHeight(true);
+            grid.getRowConstraints().add(constraint);
+        }
+
+        for (int row = 0; row < rows; row++) {
+            for (int col = 0; col < cols; col++) {
+                TileType type = maze.getTile(row, col);
+                StackPane cell = new StackPane();
+
+                boolean isPath = highlightedPath.contains(
+                        new Point(row, col)
+                );
+
+                if (type == WALL) {
+                    cell.getChildren().add(MazeRenderer.createSprite("wall.png", grid, maze));
+                } else {
+                    String floorSprite = isPath
+                            ? "floor_red.png"
+                            : "floor.png";
+
+                    cell.getChildren().add(MazeRenderer.createSprite(floorSprite, grid, maze));
+
+                    if (type == ROBOT) {
+                        String robotSprite = switch (robot.getDirection()) {
+                            case "UP" ->
+                                    "robot2.png";
+                            case "DOWN" ->
+                                    "robot0.png";
+                            case "LEFT" ->
+                                    "robot3.png";
+                            default ->
+                                    "robot1.png";
+                        };
+
+                        cell.getChildren().add(
+                                MazeRenderer.createSprite(robotSprite, grid, maze)
+                        );
+                    } else if (type == TARGET) {
+                        cell.getChildren().add(
+                                MazeRenderer.createSprite("target.png", grid, maze)
+                        );
+                    }
+                }
+
+                grid.add(cell, col, row);
+            }
+        }
+    }
+
+    public static ImageView createSprite(String name, GridPane grid, Maze maze) {
+        String path = "/com/robomaze/images/sprites/" + name;
+
+        var stream = Objects.requireNonNull(
+                MazeRenderer.class.getResourceAsStream(path),
+                "Sprite not found: " + path
+        );
+
+        Image image = new Image(stream);
+
+        ImageView imageView = new ImageView(image);
+
+        imageView.fitWidthProperty().bind(
+                grid.widthProperty()
+                        .subtract(30)
+                        .divide(maze.getCols())
+        );
+
+        imageView.fitHeightProperty().bind(
+                grid.heightProperty()
+                        .subtract(30)
+                        .divide(maze.getRows())
+        );
+
+        imageView.setPreserveRatio(false);
+        imageView.setSmooth(false);
+
+        return imageView;
+    }
+
+    public static void generateMaze(GameController gameController) {
+        Dialog<int[]> dialog = new Dialog<>();
+
+        dialog.setTitle("Maze Settings");
+        dialog.setHeaderText(
+                "Enter the maze dimensions.\n"
+                        + "Rows and columns must be odd numbers."
+        );
+        dialog.setResizable(false);
+
+        TextField rowsField = new TextField("15");
+        TextField colsField = new TextField("15");
+
+        GridPane dialogGrid = new GridPane();
+        dialogGrid.setHgap(10);
+        dialogGrid.setVgap(10);
+
+        dialogGrid.add(new Label("Rows:"), 0, 0);
+        dialogGrid.add(rowsField, 1, 0);
+        dialogGrid.add(new Label("Columns:"), 0, 1);
+        dialogGrid.add(colsField, 1, 1);
+
+        dialog.getDialogPane().setContent(dialogGrid);
+        dialog.getDialogPane().getButtonTypes().addAll(
+                ButtonType.OK,
+                ButtonType.CANCEL
+        );
+
+        dialog.setResultConverter(button -> {
+            if (button == ButtonType.OK) {
+                try {
+                    int rows = Integer.parseInt(rowsField.getText());
+                    int cols = Integer.parseInt(colsField.getText());
+
+                    if (rows < 5 || cols < 5
+                            || rows % 2 == 0 || cols % 2 == 0) {
+                        return null;
+                    }
+
+                    return new int[]{rows, cols};
+                } catch (NumberFormatException e) {
+                    return null;
+                }
+            }
+
+            return null;
+        });
+
+        dialog.showAndWait().ifPresent(dimensions -> {
+            int rows = dimensions[0];
+            int cols = dimensions[1];
+
+            gameController.originalMaze = MazeGeneration.generateMaze(rows, cols);
+            gameController.reset();
+        });
+    }
+
+}
