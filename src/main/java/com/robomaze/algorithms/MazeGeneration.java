@@ -1,7 +1,6 @@
 package com.robomaze.algorithms;
 
 import com.robomaze.models.TileType;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -13,10 +12,10 @@ public class MazeGeneration {
     private static final Random RANDOM = new Random();
 
     private static final int[][] DIRECTIONS = {
-            {-2, 0},
-            {2, 0},
-            {0, -2},
-            {0, 2}
+        {-2, 0},
+        {2, 0},
+        {0, -2},
+        {0, 2}
     };
 
     public static TileType[][] generateMaze(int rows, int cols) {
