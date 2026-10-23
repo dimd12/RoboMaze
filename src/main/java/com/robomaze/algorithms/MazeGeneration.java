@@ -33,10 +33,13 @@ public class MazeGeneration {
 
     /**
      * Generates a maze with a robot starting position and a target using
-     * Depth-First Search (DFS).
+     * a Depth-First Search (DFS) algorithm. It sets the exterior boundary
+     * of the maze to walls, leaving the interior open for the robot and target.
+     * It starts from the (1, 1) position and explores the maze by randomly choosing
+     * a direction and removing the wall between the current cell and the next.
      *
-     * @param rows the number of rows (must be odd and at least 5)
-     * @param cols the number of columns (must be odd and at least 5)
+     * @param rows the number of rows
+     * @param cols the number of columns
      * @return the generated maze
      * @throws IllegalArgumentException if the dimensions are invalid
      * @see Maze

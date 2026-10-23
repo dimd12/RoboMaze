@@ -55,6 +55,7 @@ public class MazeRenderer {
         int rows = maze.getRows();
         int cols = maze.getCols();
 
+        // Sets the column and row constraints for the GridPane
         for (int col = 0; col < cols; col++) {
             ColumnConstraints constraint = new ColumnConstraints();
             constraint.setPercentWidth(100.0 / cols);
@@ -71,6 +72,7 @@ public class MazeRenderer {
             grid.getRowConstraints().add(constraint);
         }
 
+        // Sets the tiles for the GridPane by checking the tile types
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < cols; col++) {
                 TileType type = maze.getTile(row, col);
@@ -80,6 +82,10 @@ public class MazeRenderer {
                         new Point(row, col)
                 );
 
+                // Sets the sprite for the cell based on the tile type,
+                // if it's an empty tile, it checks if the fastestPath has
+                // been created, and if so, it replaces the normal floor sprite
+                // with the red floor sprite.
                 if (type == WALL) {
                     cell.getChildren().add(MazeRenderer.createSprite("wall.png", grid, maze));
                 } else {
@@ -191,6 +197,9 @@ public class MazeRenderer {
                 ButtonType.CANCEL
         );
 
+        // Checks if the user input is valid,
+        // if the input for the rows and columns are odd and over 5
+        // it returns the new number of rows and columns
         dialog.setResultConverter(button -> {
             if (button == ButtonType.OK) {
                 try {
