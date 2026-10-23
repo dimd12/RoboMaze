@@ -7,11 +7,15 @@ RoboMaze is a maze game developed in Java. The player programs a robot to naviga
 - Java Development Kit (JDK) 21
 - Apache Maven
 
+## File Locations
+
+The written reflection, final product backlog, and executable jar are all under the /deliverables folder.
+
 ## Running RoboMaze
 
 ### Run the packaged JAR
 
-From the deliverables/ folder, run the RoboMaze.jar file to run the project
+From the deliverables/ folder, run the RoboMaze.jar file to run the project.
 
 ### Build and run from source
 
