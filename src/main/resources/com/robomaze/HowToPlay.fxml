@@ -35,21 +35,21 @@
                       prefWidth="303.0">
                     <children>
                         <Label prefHeight="58.0"
-                               prefWidth="140.0"
+                               prefWidth="160.0"
                                style="-fx-text-fill: #E6EAF0;"
                                text="ROBOT"
                                wrapText="true">
                             <font>
-                                <Font name="Consolas Bold Italic" size="50.0" />
+                                <Font name="DejaVu Sans Mono Bold" size="50.0" />
                             </font>
                         </Label>
 
                         <Label prefHeight="58.0"
-                               prefWidth="110.0"
+                               prefWidth="130.0"
                                style="-fx-text-fill: #E6EAF0;"
                                text="MAZE">
                             <font>
-                                <Font name="Consolas Bold Italic" size="50.0" />
+                                <Font name="DejaVu Sans Mono Bold" size="50.0" />
                             </font>
                         </Label>
                     </children>
@@ -68,7 +68,7 @@
                                -fx-cursor: hand;"
                         text="PLAY">
                     <font>
-                        <Font name="Consolas Bold" size="20.0" />
+                        <Font name="DejaVu Sans Mono Bold" size="20.0" />
                     </font>
                 </Button>
 
@@ -85,7 +85,7 @@
                                -fx-cursor: hand;"
                         text="How to Play">
                     <font>
-                        <Font name="Consolas Bold" size="20.0" />
+                        <Font name="DejaVu Sans Mono Bold" size="20.0" />
                     </font>
                 </Button>
 
@@ -102,7 +102,7 @@
                                -fx-cursor: hand;"
                         text="Quit">
                     <font>
-                        <Font name="Consolas Bold" size="20.0" />
+                        <Font name="DejaVu Sans Mono Bold" size="20.0" />
                     </font>
                 </Button>
             </children>
@@ -123,14 +123,14 @@
                         <Label style="-fx-text-fill: #E6EAF0;"
                                text="HOW TO PLAY">
                             <font>
-                                <Font name="Consolas Bold Italic" size="42.0" />
+                                <Font name="DejaVu Sans Mono Bold" size="42.0" />
                             </font>
                         </Label>
 
                         <Label style="-fx-text-fill: #999999;"
                                text="Program the robot. Find the route. Reach the goal.">
                             <font>
-                                <Font name="Consolas" size="12.0" />
+                                <Font name="DejaVu Sans Mono" size="12.0" />
                             </font>
                         </Label>
                     </children>
@@ -167,7 +167,7 @@
                                                         <Label style="-fx-text-fill: #E6EAF0;"
                                                                text="1. THE OBJECTIVE">
                                                             <font>
-                                                                <Font name="Consolas Bold" size="18.0" />
+                                                                <Font name="DejaVu Sans Mono Bold" size="18.0" />
                                                             </font>
                                                         </Label>
 
@@ -175,7 +175,7 @@
                                                                text="Guide your robot through the maze and reach the green target. Walls block your path, so plan your route before running your program."
                                                                wrapText="true">
                                                             <font>
-                                                                <Font name="Consolas" size="12.0" />
+                                                                <Font name="DejaVu Sans Mono" size="12.0" />
                                                             </font>
                                                         </Label>
                                                     </children>
@@ -203,7 +203,7 @@
                                                         <Label style="-fx-text-fill: #E6EAF0;"
                                                                text="2. BUILD YOUR PROGRAM">
                                                             <font>
-                                                                <Font name="Consolas Bold" size="18.0" />
+                                                                <Font name="DejaVu Sans Mono Bold" size="18.0" />
                                                             </font>
                                                         </Label>
 
@@ -211,7 +211,7 @@
                                                                text="Use the command buttons to add instructions to your program. Commands run in the order you add them."
                                                                wrapText="true">
                                                             <font>
-                                                                <Font name="Consolas" size="12.0" />
+                                                                <Font name="DejaVu Sans Mono" size="12.0" />
                                                             </font>
                                                         </Label>
                                                     </children>
@@ -231,21 +231,21 @@
                                                         <Label style="-fx-text-fill: #E6EAF0;"
                                                                text="↑">
                                                             <font>
-                                                                <Font name="Consolas Bold" size="22.0" />
+                                                                <Font name="DejaVu Sans Mono Bold" size="22.0" />
                                                             </font>
                                                         </Label>
 
                                                         <Label style="-fx-text-fill: #E6EAF0;"
                                                                text="FORWARD">
                                                             <font>
-                                                                <Font name="Consolas Bold" size="14.0" />
+                                                                <Font name="DejaVu Sans Mono Bold" size="14.0" />
                                                             </font>
                                                         </Label>
 
                                                         <Label style="-fx-text-fill: #AAAAAA;"
                                                                text="Move one tile">
                                                             <font>
-                                                                <Font name="Consolas" size="12.0" />
+                                                                <Font name="DejaVu Sans Mono" size="12.0" />
                                                             </font>
                                                         </Label>
                                                     </children>
@@ -261,21 +261,21 @@
                                                         <Label style="-fx-text-fill: #E6EAF0;"
                                                                text="↶">
                                                             <font>
-                                                                <Font name="Consolas Bold" size="22.0" />
+                                                                <Font name="DejaVu Sans Mono Bold" size="22.0" />
                                                             </font>
                                                         </Label>
 
                                                         <Label style="-fx-text-fill: #E6EAF0;"
                                                                text="TURN LEFT">
                                                             <font>
-                                                                <Font name="Consolas Bold" size="14.0" />
+                                                                <Font name="DejaVu Sans Mono Bold" size="14.0" />
                                                             </font>
                                                         </Label>
 
                                                         <Label style="-fx-text-fill: #AAAAAA;"
                                                                text="Rotate left">
                                                             <font>
-                                                                <Font name="Consolas" size="12.0" />
+                                                                <Font name="DejaVu Sans Mono" size="12.0" />
                                                             </font>
                                                         </Label>
                                                     </children>
@@ -291,21 +291,21 @@
                                                         <Label style="-fx-text-fill: #E6EAF0;"
                                                                text="↷">
                                                             <font>
-                                                                <Font name="Consolas Bold" size="22.0" />
+                                                                <Font name="DejaVu Sans Mono Bold" size="22.0" />
                                                             </font>
                                                         </Label>
 
                                                         <Label style="-fx-text-fill: #E6EAF0;"
                                                                text="TURN RIGHT">
                                                             <font>
-                                                                <Font name="Consolas Bold" size="14.0" />
+                                                                <Font name="DejaVu Sans Mono Bold" size="14.0" />
                                                             </font>
                                                         </Label>
 
                                                         <Label style="-fx-text-fill: #AAAAAA;"
                                                                text="Rotate right">
                                                             <font>
-                                                                <Font name="Consolas" size="12.0" />
+                                                                <Font name="DejaVu Sans Mono" size="12.0" />
                                                             </font>
                                                         </Label>
                                                     </children>
@@ -333,7 +333,7 @@
                                                         <Label style="-fx-text-fill: #E6EAF0;"
                                                                text="3. RUN &amp; RESET">
                                                             <font>
-                                                                <Font name="Consolas Bold" size="18.0" />
+                                                                <Font name="DejaVu Sans Mono Bold" size="18.0" />
                                                             </font>
                                                         </Label>
 
@@ -341,7 +341,7 @@
                                                                text="Press RUN to execute the commands. Use Clear Commands to empty your program, or Reset to return the robot and move counter to their starting state."
                                                                wrapText="true">
                                                             <font>
-                                                                <Font name="Consolas" size="12.0" />
+                                                                <Font name="DejaVu Sans Mono" size="12.0" />
                                                             </font>
                                                         </Label>
                                                     </children>
@@ -369,7 +369,7 @@
                                                         <Label style="-fx-text-fill: #E6EAF0;"
                                                                text="4. WATCH YOUR MOVES">
                                                             <font>
-                                                                <Font name="Consolas Bold" size="18.0" />
+                                                                <Font name="DejaVu Sans Mono Bold" size="18.0" />
                                                             </font>
                                                         </Label>
 
@@ -377,7 +377,7 @@
                                                                text="The robot cannot move through walls or leave the maze. Invalid moves should not count. Reach the green target to complete the level."
                                                                wrapText="true">
                                                             <font>
-                                                                <Font name="Consolas" size="12.0" />
+                                                                <Font name="DejaVu Sans Mono" size="12.0" />
                                                             </font>
                                                         </Label>
                                                     </children>
@@ -392,7 +392,7 @@
                                        text="TIP: The shortest route is not always the route your first idea takes!"
                                        wrapText="true">
                                     <font>
-                                        <Font name="Consolas" size="12.0" />
+                                        <Font name="DejaVu Sans Mono" size="12.0" />
                                     </font>
 
                                     <VBox.margin>

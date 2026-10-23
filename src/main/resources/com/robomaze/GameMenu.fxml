@@ -20,7 +20,7 @@
             style="-fx-background-color: #070B12;
                    -fx-padding: 10;
                    -fx-text-fill: #E6EAF0;
-                   -fx-font-family: 'Consolas';"
+                   -fx-font-family: 'DejaVu Sans Mono';"
             xmlns="http://javafx.com/javafx/26"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.robomaze.controllers.GameController">
@@ -47,7 +47,7 @@
                        textAlignment="RIGHT"
                        wrapText="true">
                     <font>
-                        <Font name="Consolas Bold" size="30.0" />
+                        <Font name="DejaVu Sans Mono Bold" size="30.0" />
                     </font>
                 </Label>
             <Button fx:id="btnHome"
@@ -56,7 +56,7 @@
                     prefWidth="75.0"
                     text="Home">
                <font>
-                  <Font name="Consolas Bold" size="18.0" />
+                  <Font name="DejaVu Sans Mono Bold" size="18.0" />
                </font>
             </Button>
             </children>
@@ -81,7 +81,7 @@
             <children>
                 <Label style="-fx-text-fill: #E6EAF0;" text="LEVEL INFO">
                     <font>
-                        <Font name="Consolas Bold" size="28.0" />
+                        <Font name="DejaVu Sans Mono Bold" size="28.0" />
                     </font>
                 </Label>
 
@@ -94,13 +94,13 @@
                     <children>
                         <Label fx:id="labelMoves" style="-fx-text-fill: #E6EAF0;" text="Moves: 0">
                             <font>
-                                <Font name="Consolas" size="14.0" />
+                                <Font name="DejaVu Sans Mono" size="14.0" />
                             </font>
                         </Label>
 
                         <Label fx:id="labelShortest" style="-fx-text-fill: #E6EAF0;" text="Shortest: -">
                             <font>
-                                <Font name="Consolas" size="14.0" />
+                                <Font name="DejaVu Sans Mono" size="14.0" />
                             </font>
                         </Label>
                     </children>
@@ -114,7 +114,7 @@
                 <VBox prefHeight="200.0"
                       prefWidth="100.0"
                       spacing="6.5"
-                      style="-fx-font-family: 'Consolas';">
+                      style="-fx-font-family: 'DejaVu Sans Mono';">
                     <VBox.margin>
                         <Insets left="10.0" />
                     </VBox.margin>
@@ -145,7 +145,7 @@
                     <children>
                         <Label style="-fx-text-fill: #E6EAF0;" text="Program">
                             <font>
-                                <Font name="Consolas Bold" size="22.0" />
+                                <Font name="DejaVu Sans Mono Bold" size="22.0" />
                             </font>
                         </Label>
 
@@ -154,7 +154,7 @@
                                   prefWidth="207.0"
                                   style="-fx-background-radius: 10;
                                          -fx-border-radius: 10;
-                                         -fx-font-family: Consolas" />
+                                         -fx-font-family: DejaVu Sans Mono" />
                     </children>
                     <VBox.margin>
                         <Insets right="10.0" />
@@ -167,7 +167,7 @@
                       prefHeight="139.0"
                       prefWidth="207.0"
                       spacing="10.0"
-                      style="-fx-font-family: 'Consolas';
+                      style="-fx-font-family: 'DejaVu Sans Mono';
                              -fx-font-weight: 700;">
                     <children>
                         <Button fx:id="btnForward"
@@ -209,7 +209,7 @@
                      -fx-border-radius: 15;
                      -fx-border-width: 1;
                      -fx-padding: 10;
-                     -fx-font-family: 'Consolas';"
+                     -fx-font-family: 'DejaVu Sans Mono';"
               BorderPane.alignment="CENTER">
             <children>
                 <HBox alignment="CENTER_LEFT"
@@ -224,7 +224,7 @@
                                text="PROGRAM CONTROLS"
                                wrapText="true">
                             <font>
-                                <Font name="Consolas Bold" size="30.0" />
+                                <Font name="DejaVu Sans Mono Bold" size="30.0" />
                             </font>
                         </Label>
                     </children>
@@ -241,40 +241,40 @@
                         <Button fx:id="btnRun"
                                 mnemonicParsing="false"
                                 prefHeight="50.0"
-                                prefWidth="150.0"
+                                prefWidth="160.0"
                                 text="▶ RUN">
                             <font>
-                                <Font name="Consolas Bold" size="18.0" />
+                                <Font name="DejaVu Sans Mono Bold" size="18.0" />
                             </font>
                         </Button>
 
                         <Button fx:id="btnViewPath"
                                 mnemonicParsing="false"
                                 prefHeight="50.0"
-                                prefWidth="150.0"
+                                prefWidth="160.0"
                                 text="Fastest Path">
                             <font>
-                                <Font name="Consolas Bold" size="18.0" />
+                                <Font name="DejaVu Sans Mono Bold" size="18.0" />
                             </font>
                         </Button>
 
                         <Button fx:id="btnReset"
                                 mnemonicParsing="false"
                                 prefHeight="50.0"
-                                prefWidth="150.0"
+                                prefWidth="160.0"
                                 text="Reset">
                             <font>
-                                <Font name="Consolas Bold" size="18.0" />
+                                <Font name="DejaVu Sans Mono Bold" size="18.0" />
                             </font>
                         </Button>
 
                         <Button fx:id="btnNewMaze"
                                 mnemonicParsing="false"
                                 prefHeight="50.0"
-                                prefWidth="150.0"
+                                prefWidth="160.0"
                                 text="New Maze">
                             <font>
-                                <Font name="Consolas Bold" size="18.0" />
+                                <Font name="DejaVu Sans Mono Bold" size="18.0" />
                             </font>
                         </Button>
                     </children>

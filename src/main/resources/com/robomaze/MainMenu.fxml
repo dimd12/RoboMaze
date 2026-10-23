@@ -34,20 +34,20 @@
                       prefWidth="303.0">
                     <children>
                         <Label prefHeight="72.0"
-                               prefWidth="140.0"
+                               prefWidth="160.0"
                                style="-fx-text-fill: #E6EAF0;"
                                text="ROBOT">
                             <font>
-                                <Font name="Consolas Bold Italic" size="50.0" />
+                                <Font name="DejaVu Sans Mono Bold" size="50.0" />
                             </font>
                         </Label>
 
                         <Label prefHeight="72.0"
-                               prefWidth="110.0"
+                               prefWidth="130.0"
                                style="-fx-text-fill: #E6EAF0;"
                                text="MAZE">
                             <font>
-                                <Font name="Consolas Bold Italic" size="50.0" />
+                                <Font name="DejaVu Sans Mono Bold" size="50.0" />
                             </font>
                         </Label>
                     </children>
@@ -67,7 +67,7 @@
                                -fx-cursor: hand;"
                         text="PLAY">
                     <font>
-                        <Font name="Consolas Bold" size="20.0" />
+                        <Font name="DejaVu Sans Mono Bold" size="20.0" />
                     </font>
                 </Button>
 
@@ -84,7 +84,7 @@
                                -fx-cursor: hand;"
                         text="How to Play">
                     <font>
-                        <Font name="Consolas Bold" size="20.0" />
+                        <Font name="DejaVu Sans Mono Bold" size="20.0" />
                     </font>
                 </Button>
 
@@ -101,7 +101,7 @@
                                -fx-cursor: hand;"
                         text="Quit">
                     <font>
-                        <Font name="Consolas Bold" size="20.0" />
+                        <Font name="DejaVu Sans Mono Bold" size="20.0" />
                     </font>
                 </Button>
             </children>
