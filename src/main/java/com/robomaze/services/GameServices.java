@@ -115,7 +115,6 @@ public class GameServices {
                 })
         );
 
-        // Execute one command every 250 milliseconds.
         timeline.setCycleCount(commands.size());
         timeline.play();
 

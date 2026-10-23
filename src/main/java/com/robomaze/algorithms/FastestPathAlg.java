@@ -24,7 +24,13 @@ public class FastestPathAlg {
     private static final int[] DIRECTIONS_COLS = {0, 0, -1, 1};
 
     /**
-     * Finds the shortest path using Breadth-First Search (BFS).
+     * Finds the shortest path using a Breadth-First Search (BFS) algorithm.
+     * It calculates the shortest path with the smallest number of tiles
+     * through a maze and calculates its movement cost.
+     *
+     * The algorithm uses a queue to explore the maze,
+     * starting from the start point and ending at the end point,
+     * checking if the neighboring tiles are valid and not visited.
      *
      * @param maze the maze to search
      * @param start the starting point
@@ -40,11 +46,14 @@ public class FastestPathAlg {
 
         boolean[][] visited = new boolean[rows][cols];
         Point[][] previous = new Point[rows][cols];
+        // Queue to store the points to be explored
         Queue<Point> queue = new LinkedList<>();
 
         queue.add(start);
         visited[start.x][start.y] = true;
 
+        // Loop responsible for exploring the maze,
+        // removing visited tiles and adding valid neighboring tiles to the queue.
         while (!queue.isEmpty()) {
             Point current = queue.poll();
 
@@ -86,6 +95,7 @@ public class FastestPathAlg {
             current = previous[current.x][current.y];
         }
 
+        // Reverse the path to start from the start point.
         Collections.reverse(path);
         return path;
     }
@@ -103,6 +113,9 @@ public class FastestPathAlg {
 
         int dirChanges = 0;
 
+        // Loop responsible for counting the direction changes in the path
+        // by comparing the horizontal and vertical directions of three points
+        // from the path.
         for (int i = 1; i < path.size() - 1; i++) {
             Point previous = path.get(i - 1);
             Point current = path.get(i);

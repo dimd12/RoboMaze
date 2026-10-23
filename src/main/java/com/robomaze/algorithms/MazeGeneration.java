@@ -33,7 +33,11 @@ public class MazeGeneration {
 
     /**
      * Generates a maze with a robot starting position and a target using
-     * Depth-First Search (DFS).
+     * a Depth-First Search (DFS) algorithm.
+     *
+     * The algorithm starts from the (1, 1) Point and explores the maze by
+     * recursively visiting neighboring cells, removing walls between them,
+     * and backtracking when necessary.
      *
      * @param rows the number of rows (must be odd and at least 5)
      * @param cols the number of columns (must be odd and at least 5)
@@ -59,6 +63,8 @@ public class MazeGeneration {
         }
 
         boolean[][] visited = new boolean[rows][cols];
+        // Uses a stack to keep track of visited cells during maze generation
+        // and to backtrack when necessary.
         Stack<int[]> stack = new Stack<>();
 
         // Start generating the maze from the top-left interior cell.
@@ -69,6 +75,7 @@ public class MazeGeneration {
         tiles[startRow][startCol] = TileType.EMPTY;
         stack.push(new int[]{startRow, startCol});
 
+        // Continue generating the maze until the stack is empty.
         while (!stack.isEmpty()) {
             int[] current = stack.peek();
             int row = current[0];

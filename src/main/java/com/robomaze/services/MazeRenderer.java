@@ -55,6 +55,7 @@ public class MazeRenderer {
         int rows = maze.getRows();
         int cols = maze.getCols();
 
+        // Sets up the column and row constraints for the GridPane
         for (int col = 0; col < cols; col++) {
             ColumnConstraints constraint = new ColumnConstraints();
             constraint.setPercentWidth(100.0 / cols);
@@ -71,15 +72,18 @@ public class MazeRenderer {
             grid.getRowConstraints().add(constraint);
         }
 
+        // Sets up the cells for the GridPane
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < cols; col++) {
                 TileType type = maze.getTile(row, col);
+                // Uses a StackPane to be able to stack sprites on top of each other.
                 StackPane cell = new StackPane();
 
                 boolean isPath = highlightedPath.contains(
                         new Point(row, col)
                 );
 
+                // If the fastest path is generated, it uses the red floor sprite
                 if (type == WALL) {
                     cell.getChildren().add(MazeRenderer.createSprite("wall.png", grid, maze));
                 } else {
@@ -191,6 +195,9 @@ public class MazeRenderer {
                 ButtonType.CANCEL
         );
 
+        // Sets up the dialog's result converter by checking
+        // if the input is valid, so at least 5 rows and columns
+        // and both values must be odd.
         dialog.setResultConverter(button -> {
             if (button == ButtonType.OK) {
                 try {
@@ -202,6 +209,7 @@ public class MazeRenderer {
                         return null;
                     }
 
+                    // Returns the dimensions of the maze
                     return new int[]{rows, cols};
                 } catch (NumberFormatException e) {
                     return null;
@@ -211,6 +219,8 @@ public class MazeRenderer {
             return null;
         });
 
+        // If the input is valid, it generates the maze
+        // with the given dimensions.
         dialog.showAndWait().ifPresent(dimensions -> {
             int rows = dimensions[0];
             int cols = dimensions[1];
